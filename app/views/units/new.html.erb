@@ -1,0 +1,27 @@
+<h3>
+	New page for Units
+</h3>
+
+<div>
+	<%= form_for(@unit, method: :post) do |f| %>
+		<%= f.label "Unit Type" %>
+		<%= f.text_field :unit_type %>
+		<%= f.label "Order ID" %> 
+		<%= f.text_field :order_id %> 
+		<%= f.label "Vendor" %>
+		<%= f.text_field :vendor %> 
+		<%= f.label "Manufacturer" %> 
+		<%= f.text_field :mfg %> 
+		<%= f.label "Product ID" %> 
+		<%= f.text_field :product_id %>
+		<%= f.label "Nickname" %> 
+		<%= f.text_field :nickname %>
+		<%= f.label "Description" %> 
+		<%= f.text_field :description %> 
+		<%= f.label "IC Notes" %> 
+		<%= f.text_field :notes %> 
+		<%= f.label "Product Type" %>
+		<%= f.text_field :product_type %>
+		<%= f.submit "Add Unit" %>
+	<% end %>
+</div>

@@ -11,6 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20141001001332) do
+
+  create_table "units", force: true do |t|
+    t.string   "unit_type"
+    t.string   "order_id"
+    t.string   "vendor"
+    t.string   "mfg"
+    t.string   "product_id"
+    t.string   "nickname"
+    t.string   "description"
+    t.string   "notes"
+    t.integer  "product_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
