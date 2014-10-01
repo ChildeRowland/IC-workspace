@@ -1,3 +1,76 @@
 <h3>
 	Index page for the Units
 </h3>
+
+<table>
+	<thead>
+		<tr>
+			<th>
+				Unit Type
+			</th>
+			<th>
+				Order ID
+			</th>
+			<th>
+				Vendor
+			</th>
+			<th>
+				Manufacturer
+			</th>
+			<th>
+				Product ID
+			</th>
+			<th>
+				Nickname
+			</th>
+			<th>
+				Description
+			</th>
+			<th>
+				Notes
+			</th>
+			<th>
+				Product Type
+			</th>
+			<th>
+				Last Updated
+			</th>
+		</tr>
+	</thead>
+	<% @units.each do |u| %>
+		<tbody>
+			<tr>
+				<td>
+					<%= u.unit_type %><br>
+				</td>
+				<td>
+					<%= u.order_id %><br>
+				</td>
+				<td>
+					<%= u.vendor %><br>
+				</td>
+				<td>
+					<%= u.mfg %><br>
+				</td>
+				<td>
+					<%= u.product_id %><br>
+				</td>
+				<td>
+					<%= u.nickname %><br>
+				</td>
+				<td>
+					<%= u.description %><br>
+				</td>
+				<td>
+					<%= u.notes %><br>
+				</td>
+				<td>
+					<%= u.product_type %><br>
+				</td>
+				<td>
+					<%= time_ago_in_words(u.updated_at) %><br>
+				</td>
+			</tr>
+		</tbody>
+	<% end %>
+</table>

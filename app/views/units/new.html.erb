@@ -4,24 +4,24 @@
 
 <div>
 	<%= form_for(@unit, method: :post) do |f| %>
-		<%= f.label "Unit Type" %>
-		<%= f.text_field :unit_type %>
-		<%= f.label "Order ID" %> 
-		<%= f.text_field :order_id %> 
-		<%= f.label "Vendor" %>
-		<%= f.text_field :vendor %> 
-		<%= f.label "Manufacturer" %> 
-		<%= f.text_field :mfg %> 
-		<%= f.label "Product ID" %> 
-		<%= f.text_field :product_id %>
-		<%= f.label "Nickname" %> 
-		<%= f.text_field :nickname %>
-		<%= f.label "Description" %> 
-		<%= f.text_field :description %> 
-		<%= f.label "IC Notes" %> 
-		<%= f.text_field :notes %> 
-		<%= f.label "Product Type" %>
-		<%= f.text_field :product_type %>
+		<%= f.label "Unit Type" %><br>
+		<%= f.text_field :unit_type, placeholder: "placeholder" %><br>
+		<%= f.label "Order ID" %><br>
+		<%= f.text_field :order_id %> <br>
+		<%= f.label "Vendor" %><br>
+		<%= f.text_field :vendor %><br>
+		<%= f.label "Manufacturer" %><br>
+		<%= f.text_field :mfg %><br>
+		<%= f.label "Product ID" %><br>
+		<%= f.text_field :product_id %><br>
+		<%= f.label "Nickname" %><br>
+		<%= f.text_field :nickname %><br>
+		<%= f.label "Description" %><br>
+		<%= f.text_field :description %><br>
+		<%= f.label "IC Notes" %><br>
+		<%= f.text_field :notes %><br>
+		<%= f.label "Product Type" %><br>
+		<%= f.text_field :product_type %><br>
 		<%= f.submit "Add Unit" %>
 	<% end %>
 </div>
