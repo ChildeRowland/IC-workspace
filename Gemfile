@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk'
+
 # heroku gem handled in the toolbelt
 # gem 'heroku'
 
