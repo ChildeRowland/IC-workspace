@@ -6,6 +6,9 @@
 	<thead>
 		<tr>
 			<th>
+				Image
+			</th>
+			<th>
 				Unit Type
 			</th>
 			<th>
@@ -40,6 +43,9 @@
 	<% @units.each do |u| %>
 		<tbody>
 			<tr>
+				<td>
+					<%= image_tag u.avatar.url(:thumb) %>
+				</td>
 				<td>
 					<%= u.unit_type %><br>
 				</td>

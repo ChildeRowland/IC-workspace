@@ -14,6 +14,10 @@
 ActiveRecord::Schema.define(version: 20141001001332) do
 
   create_table "units", force: true do |t|
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string   "unit_type"
     t.string   "order_id"
     t.string   "vendor"

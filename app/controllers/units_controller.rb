@@ -9,13 +9,13 @@ class UnitsController < ApplicationController
 	end
 
 	def create
-		@unit = Unit.new(unit_params)
+		@unit = Unit.create(unit_params)
 		if @unit.save
 			flash[:notice] = "New Unit Added"
 			redirect_to units_path
-		else
-			flash[:notice] = "Not Added"
-			redirect :back
+		# else
+		# 	flash[:notice] = "Not Added"
+		# 	redirect_to :back
 		end
 	end
 
@@ -27,7 +27,7 @@ class UnitsController < ApplicationController
 
 	private
 	def unit_params
-		params.require(:unit).permit(:unit_type, :order_id, :vendor, :mfg, :product_id, :nickname, :description, :notes, :product_type)
+		params.require(:unit).permit( :avatar, :unit_type, :order_id, :vendor, :mfg, :product_id, :nickname, :description, :notes, :product_type)
 	end
 
 end
