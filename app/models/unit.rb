@@ -4,4 +4,7 @@ class Unit < ActiveRecord::Base
   	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   	#validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
 
+  	has_many :inventories
+  	has_many :sites, through: :inventories
+
 end
