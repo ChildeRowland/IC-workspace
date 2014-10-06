@@ -1,0 +1,13 @@
+<h3>
+	Page for New Job Sites
+</h3>
+
+<div>
+	<%= form_for(@site, method: :post) do |f| %>
+		<%= f.label "Client" %>
+		<%= f.text_field :client %>
+		<%= f.label "Number" %>
+		<%= f.text_field :number %>
+		<%= f.submit "New Job Site" %>
+	<% end %>
+</div>

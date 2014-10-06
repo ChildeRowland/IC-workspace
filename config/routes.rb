@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   get '/' => 'home#index'
 
+  resources :sites do
+    resources :inventories
+  end
+
   resources :units
 
 
