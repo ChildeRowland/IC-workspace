@@ -1,0 +1,11 @@
+<h3>
+	<%= "Add units to #{@site.number}'s Inventory" %>
+</h3>
+
+<div>
+	<%= form_for([@site, @inventory], method: :post) do |f| %>
+		<%= f.label "Units" %>
+		<%= f.select(:unit_id, @units.all.collect {|u| [u.nickname, u.id]}) %>
+		<%= f.submit "Add" %>
+	<% end %>
+</div>

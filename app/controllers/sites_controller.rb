@@ -17,8 +17,8 @@ class SitesController < ApplicationController
 	end
 
 	def show
-		id = params[:id]
-		@site = Site.find(id)
+		@site = Site.find(params[:id])
+		@units = Unit.all
 	end
 
 	private
