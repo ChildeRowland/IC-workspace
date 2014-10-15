@@ -1,0 +1,25 @@
+<h3>
+	List of Retrofit Stores
+</h3>
+
+<% if @retrofit_jobs.empty? %>
+	<div>
+		<p>
+			No Retrofit Stores Yet
+		</p>
+	</div>
+<% else %>
+	<div>
+		<ul>
+			<% @retrofit_jobs.each do |r| %>
+			<li>
+				<%= r.store_number %>
+				<%= r.mall_name %>
+				<%= link_to "Veiw Job", retrofit_job_path(:id => r.id) %> 
+			</li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<%= link_to "Add Store", new_retrofit_job_path %>

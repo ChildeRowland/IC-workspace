@@ -11,11 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005225544) do
+ActiveRecord::Schema.define(version: 20141015175130) do
 
   create_table "inventories", force: true do |t|
     t.integer  "site_id"
     t.integer  "unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "retrofit_jobs", force: true do |t|
+    t.string   "store_number"
+    t.string   "mall_name"
+    t.string   "phone"
+    t.text     "hours"
+    t.date     "start"
+    t.date     "finish"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

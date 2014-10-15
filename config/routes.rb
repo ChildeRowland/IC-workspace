@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   get '/' => 'home#index'
 
+  resources :retrofit_jobs do
+
+  end
+
   resources :sites do
     resources :inventories
   end

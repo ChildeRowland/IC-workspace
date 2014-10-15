@@ -1,0 +1,23 @@
+<h3>
+	<%= "#{@retrofit_job.store_number} #{@retrofit_job.mall_name} Project Page" %>
+</h3>
+
+<div>
+	<p>
+		Store Information
+	</p>
+	<p>
+		phone number: <%= @retrofit_job.phone %>
+	</p>
+	<p>
+		Store Hours:
+		<br>
+		<%= simple_format(@retrofit_job.hours) %>
+	</p>
+	<p>
+		Site Visit:
+		<br>
+		<%= "#{@retrofit_job.start.strftime("%B, %d %Y")} through #{@retrofit_job.finish.strftime("%B, %d %Y")}" %>
+	</p>
+	<%= link_to "Edit Store Info", edit_retrofit_job_path %>
+</div>
