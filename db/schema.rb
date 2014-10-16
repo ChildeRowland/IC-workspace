@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015175130) do
+ActiveRecord::Schema.define(version: 20141015214950) do
+
+  create_table "contacts", force: true do |t|
+    t.integer  "retrofit_job_id"
+    t.string   "title"
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "email"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "inventories", force: true do |t|
     t.integer  "site_id"

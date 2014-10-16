@@ -1,0 +1,19 @@
+<h3>
+	<%= "Add Contact for #{@retrofit_job.store_number}" %>
+</h3>
+
+<div>
+	<%= form_for([@retrofit_job, @contact], method: :post) do |f| %>
+		<%= f.label "job title" %><br>
+		<%= f.text_field :title %><br>
+		<%= f.label "first name" %><br>
+		<%= f.text_field :fname %><br>
+		<%= f.label "last name" %><br>
+		<%= f.text_field :lname %><br>
+		<%= f.label "email" %><br>
+		<%= f.text_field :email %><br>
+		<%= f.label "notes" %><br>
+		<%= f.text_area :notes %><br>
+		<%= f.submit "add contact" %>
+	<% end %>
+</div>

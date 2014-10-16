@@ -3,14 +3,14 @@ Rails.application.routes.draw do
   get '/' => 'home#index'
 
   resources :retrofit_jobs do
-
+    resources :contacts
   end
 
-  resources :sites do
-    resources :inventories
-  end
+  # resources :sites do
+  #   resources :inventories
+  # end
 
-  resources :units
+  # resources :units
 
 
   # The priority is based upon order of creation: first created -> highest priority.

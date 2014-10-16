@@ -21,3 +21,25 @@
 	</p>
 	<%= link_to "Edit Store Info", edit_retrofit_job_path %>
 </div>
+
+<div>
+	<p>
+		Store Contacts
+	</p>
+	<ul>
+		<% @retrofit_job.contacts.each do |c| %>
+		<li>
+			<%= "#{c.title}:" %><br>
+			<%= "#{c.fname} #{c.lname}" %><br>
+			<%= c.email %><br>
+			<%= simple_format(c.notes) %><br>
+			<%= link_to "edit contact", edit_retrofit_job_contact_path(@retrofit_job, c.id) %>
+			<%= link_to "delete contact" %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+
+
+
+
