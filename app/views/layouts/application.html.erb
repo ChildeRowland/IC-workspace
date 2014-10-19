@@ -7,23 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class="wrapper">
+		<nav>
+			<ul>
+				<li>
+					<%= link_to "Retrofit Jobs", retrofit_jobs_path %>
+				</li>
+			</ul>
+		</nav>
 
-	<nav>
-		<ul>
-			<li>
-				<%= link_to "Retrofit Jobs", retrofit_jobs_path %>
-			</li>
-		</ul>
-	</nav>
+		<% if flash[:notice] %>
+			<p><%= flash[:notice] %></p>
+		<% end %>
+		<% if flash[:alert] %>
+			<p><%= flash[:alert] %></p>
+		<% end %>
 
-	<% if flash[:notice] %>
-		<p><%= flash[:notice] %></p>
-	<% end %>
-	<% if flash[:alert] %>
-		<p><%= flash[:alert] %></p>
-	<% end %>
+		<h1>
+			INVISIBLE CIRCUS
+		</h1>
 
-<%= yield %>
+		<h2>
+			LED Retrofit
+		</h2>
 
+		<%= yield %>
+
+	</div>
 </body>
 </html>

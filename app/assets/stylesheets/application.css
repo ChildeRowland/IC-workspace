@@ -13,3 +13,46 @@
  *= require_tree .
  *= require_self
  */
+
+.wrapper {
+	margin: 2px;
+}
+
+h1 {
+	font-size: 45px;
+	font-family: Poiret One;
+}
+
+/* Divs for retrofit store catogories. */
+
+.store-box {
+	background-color: lightgrey;
+	max-width: 49%;
+	padding: 5px;
+	margin: 0px 0px 5px 0px;
+}
+
+.store-box h4 {
+	font-size: 22px;
+	text-align: center;
+}
+
+.store-box ul {
+	margin-left: -20px;
+}
+
+.store-box ul li {
+	list-style: none;
+}
+
+.store-box ul li p {
+	background-color: white;
+}
+
+.contact-box {
+	margin: 0px 0px 20px 0px;
+	padding: 10px;
+	background-color: lightpink;
+}
+
+

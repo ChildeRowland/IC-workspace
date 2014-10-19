@@ -2,12 +2,14 @@
 	<%= "#{@retrofit_job.store_number} #{@retrofit_job.mall_name} Project Page" %>
 </h3>
 
-<div>
-	<p>
+<div class="store-box">
+	<h4>
 		Store Information
-	</p>
+	</h4>
 	<p>
-		phone number: <%= @retrofit_job.phone %>
+		phone number: 
+		<br>
+		<%= @retrofit_job.phone %>
 	</p>
 	<p>
 		Store Hours:
@@ -22,18 +24,20 @@
 	<%= link_to "Edit Store Info", edit_retrofit_job_path %>
 </div>
 
-<div>
-	<p>
+<div class="store-box">
+	<h4>
 		Store Contacts
-	</p>
+	</h4>
 	<ul>
 		<% @retrofit_job.contacts.each do |c| %>
 		<li>
-			<%= "#{c.title}:" %><br>
-			<%= "#{c.fname} #{c.lname}" %><br>
-			<%= c.email %><br>
-			<%= simple_format(c.notes) %><br>
-			<%= link_to "edit contact", edit_retrofit_job_contact_path(@retrofit_job, c.id) %>
+			<ul class ="contact-box">
+			<li><%= "#{c.title}:" %></li>
+			 <li><%= "#{c.fname} #{c.lname}" %></li>
+			<li><%= c.email %></li>
+			<li><%= simple_format(c.notes) %></li>
+			<li><%= link_to "edit contact", edit_retrofit_job_contact_path(@retrofit_job, c.id) %></li>
+			</ul>
 		</li>
 		<% end %>
 	</ul>
