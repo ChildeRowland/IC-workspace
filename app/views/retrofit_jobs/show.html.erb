@@ -21,22 +21,25 @@
 		<br>
 		<%= "#{@retrofit_job.start.strftime("%B, %d %Y")} through #{@retrofit_job.finish.strftime("%B, %d %Y")}" %>
 	</p>
-	<%= link_to "Edit Store Info", edit_retrofit_job_path %>
+	<%= button_to "Edit Store", edit_retrofit_job_path, method: :get, :class => "edit-form" %>
 </div>
 
-<div class="store-box">
+<div class="store-box contacts">
 	<h4>
 		Store Contacts
 	</h4>
+
+	<%= button_to "Add", new_retrofit_job_contact_path(@retrofit_job), :class => "add-button", :method => :get %>
+
 	<ul>
 		<% @retrofit_job.contacts.each do |c| %>
 		<li>
 			<ul class ="contact-box">
-			<li><%= "#{c.title}:" %></li>
-			 <li><%= "#{c.fname} #{c.lname}" %></li>
-			<li><%= c.email %></li>
-			<li><%= simple_format(c.notes) %></li>
-			<li><%= link_to "edit contact", edit_retrofit_job_contact_path(@retrofit_job, c.id) %></li>
+				<li><%= "#{c.title}:" %></li>
+				 <li><%= "#{c.fname} #{c.lname}" %></li>
+				<li><%= c.email %></li>
+				<li class="notes" ><%= simple_format(c.notes) %></li>
+				<li><%= button_to "edit contact", edit_retrofit_job_contact_path(@retrofit_job, c.id), :method => :get, :class => "edit-form" %></li>
 			</ul>
 		</li>
 		<% end %>

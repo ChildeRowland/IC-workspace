@@ -14,31 +14,41 @@
  *= require_self
  */
 
+body {
+	font-family: Lucida Grande;
+}
+
 .wrapper {
 	margin: 2px;
 }
 
 h1 {
 	font-size: 45px;
-	font-family: Poiret One;
 }
 
 /* Divs for retrofit store catogories. */
 
 .store-box {
-	background-color: lightgrey;
+	background-color: rgb(210, 237, 236);
 	max-width: 49%;
-	padding: 5px;
-	margin: 0px 0px 5px 0px;
+	padding: 10px 10px 30px 10px;
+	margin: 0px 0px 10px 0px;
 }
 
 .store-box h4 {
 	font-size: 22px;
-	text-align: center;
+}
+
+.store-box.contacts h4 {
+	width: inherit;
+	clear: none;
+	display: inline;
+	float: left;
 }
 
 .store-box ul {
 	margin-left: -20px;
+	clear: both;
 }
 
 .store-box ul li {
@@ -47,12 +57,43 @@ h1 {
 
 .store-box ul li p {
 	background-color: white;
+	padding: 5px;
+	width: inherit;
 }
 
 .contact-box {
 	margin: 0px 0px 20px 0px;
-	padding: 10px;
-	background-color: lightpink;
+	padding: 10px 10px 40px 10px;
+	background-color: rgb(194, 197, 197);
+	border-radius: 10px;
+	box-shadow: 5px 7px 2px #888888;
 }
 
+/* Button Styling */
+
+.add-button {
+	border: 1px solid #96d1f8;
+	box-shadow: 0px 5px 5px #888888;
+	border-radius: 5px;
+	background-color: lightblue;
+	margin: 32px 10px 0px 0px;
+	color: white;
+	clear: none;
+	display: inline;
+	width: inherit;
+	float: right;
+}
+
+.edit-form {
+	border: 1px solid #FF9100;
+	box-shadow: 0px 5px 5px #888888;
+	border-radius: 5px;
+	background-color: #FF9B00;
+	margin: 0px 0px 0px 0px;
+	color: white;
+	clear: both;
+	display: inline;
+	width: inherit;
+	float: right;
+}
 
