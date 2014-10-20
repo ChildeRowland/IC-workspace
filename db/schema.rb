@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015214950) do
+ActiveRecord::Schema.define(version: 20141020140310) do
+
+  create_table "assets", force: true do |t|
+    t.string   "fname"
+    t.string   "mname"
+    t.string   "lname"
+    t.date     "dob"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "rate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contacts", force: true do |t|
     t.integer  "retrofit_job_id"

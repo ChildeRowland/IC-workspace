@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :contacts
   end
 
+  resources :assets do
+  end
+
   # resources :sites do
   #   resources :inventories
   # end

@@ -1,0 +1,22 @@
+<h3>
+	Asset Index Page
+</h3>
+
+<%= link_to 'Add', new_asset_path %>
+
+<div>
+	<% if @assets.empty? %>
+		<p>
+			No Assets Saved
+		</p>
+	<% else %>
+		<ul>
+			<% @assets.each do |a| %>
+				<li>
+					<%= "#{a.fname} #{a.lname}" %>
+					<%= link_to 'view', asset_path(a.id) %>
+				</li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>

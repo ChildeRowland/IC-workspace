@@ -1,0 +1,26 @@
+<h3>
+	<%= "#{@asset.fname}'s Info Page" %>
+</h3>
+
+<div>
+	<p>
+		Name:<br>
+		<%= "#{@asset.fname} #{@asset.mname} #{@asset.lname}" %>
+	</p>
+	<p>
+		Contact:<br>
+		<%= @asset.phone %><br>
+		<%= @asset.email %>
+	</p>
+	<p>
+		Date of birth:<br>
+		<%= @asset.dob %>
+	</p>
+	<p>
+		Rate Type:<br>
+		<%= @asset.rate %>
+	</p>
+
+	<%= link_to 'edit asset', edit_asset_path(@asset) %>
+
+</div>

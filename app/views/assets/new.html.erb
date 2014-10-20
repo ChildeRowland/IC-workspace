@@ -1,0 +1,23 @@
+<h3>
+	New Asset Page
+</h3>
+
+<div>
+	<%= form_for(@asset, methed: :post) do |f| %>
+		<%= f.label "first name" %>
+		<%= f.text_field :fname %><br>
+		<%= f.label "middle name" %>
+		<%= f.text_field :mname %><br>
+		<%= f.label "last name" %>
+		<%= f.text_field :lname %><br>
+		<%= f.label "DOB" %>
+		<%= f.text_field :dob %><br>
+		<%= f.label "phone number" %>
+		<%= f.text_field :phone %><br>
+		<%= f.label "email" %>
+		<%= f.text_field :email %><br>
+		<%= f.label "Rate/Role" %>
+		<%= f.text_field :rate %><br>
+		<%= f.submit "new asset" %>
+	<% end %>
+</div>
