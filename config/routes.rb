@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :retrofit_jobs do
     resources :contacts
+    resources :crews
   end
 
   resources :assets do
