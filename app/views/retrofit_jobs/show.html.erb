@@ -46,6 +46,12 @@
 	</ul>
 </div>
 
+<div>
+	<% @retrofit_job.crews.each do |c| %>
+		<%= Asset.find(c.asset_id).fname %>
+	<% end %>
+</div>
+
 
 
 
