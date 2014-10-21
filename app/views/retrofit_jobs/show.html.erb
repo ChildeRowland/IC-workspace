@@ -53,21 +53,32 @@
 	</h4>
 
 		<div class="drop-form">
-			<%= form_for([@retrofit_job, @crew], :url => retrofit_job_crews_path(@crew), method: :create) do |f| %>
+			<%= form_for([@retrofit_job, @crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
 			<%= f.label "Select Name" %><br>
-			<%= f.select(:asset_id, @assets.all.collect {|a| [a.lname, a.id]}) %>
+			<%= f.select(:asset_id, Asset.all.collect {|a| [a.lname, a.id]}) %>
 			<%= f.submit "add to #{@retrofit_job.store_number}" %>
 			<% end %>
 		</div>
-		<ul>
-			<% @retrofit_job.crews.each do |c| %>
-				<li>
-				<%= Asset.find(c.asset_id).fname %>
-				<%= Asset.find(c.asset_id).lname %>
-				</li>
-			<% end %>
-		</ul>
-		<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job.id, @crew.id), method: :get, :class => "edit-form" %>
+
+		<% if Asset.last.nil? %>
+			<p>
+				No assets available in the IC Database, but you can <%= link_to "add some here.", new_asset_path %>
+			</p>
+		<% elsif @assets.empty? %>
+			<p>
+				No Assets assigned to this job yet.  Use the drop down list to add.
+			</p>
+		<% else %>
+			<ul>
+				<% @assets.each do |a| %>
+					<li>
+					<%= a.fname %>
+					<%= a.lname %>
+					</li>
+				<% end %>
+			</ul>
+			<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job.id, @crew.id), method: :get, :class => "edit-form" %>
+		<% end %>
 </div>
 
 

@@ -37,9 +37,8 @@ class RetrofitJobsController < ApplicationController
 
 	def show
 		@retrofit_job = RetrofitJob.find(params[:id])
-			@crew = Crew.find(params[:id])
-			#@crew = Crew.where(:retrofit_job_id => params[:id]).last
-		@assets = Asset.all
+		@crew = @retrofit_job.crews.build(params[:crew])
+		@assets = @retrofit_job.assets.all
 
 	end
 
