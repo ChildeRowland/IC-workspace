@@ -53,7 +53,7 @@
 	</h4>
 
 		<div class="drop-form">
-			<%= form_for([@retrofit_job, @crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
+			<%= form_for([@retrofit_job, @new_crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
 			<%= f.label "Select Name" %><br>
 			<%= f.select(:asset_id, Asset.all.collect {|a| [a.lname, a.id]}) %>
 			<%= f.submit "add to #{@retrofit_job.store_number}" %>
@@ -77,7 +77,7 @@
 					</li>
 				<% end %>
 			</ul>
-			<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job.id, @crew.id), method: :get, :class => "edit-form" %>
+			<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job.id, @crew), method: :get, :class => "edit-form" %>
 		<% end %>
 </div>
 

@@ -46,6 +46,10 @@ h1 {
 	float: left;
 }
 
+.store-box p {
+	clear: both;
+}
+
 .store-box ul {
 	margin-left: -20px;
 	clear: both;
