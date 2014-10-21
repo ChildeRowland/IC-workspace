@@ -12,7 +12,8 @@ class RetrofitJobsController < ApplicationController
 		@retrofit_job = RetrofitJob.create(retrofit_job_params)
 		if @retrofit_job.save
 			flash[:notice] = "Store Added"
-			redirect_to retrofit_job_path(params[:id])
+			#redirect_to action: "show"
+			redirect_to retrofit_job_path(@retrofit_job)
 		else
 			flash[:notice] = "Try Again"
 			redirect_to :back
@@ -36,8 +37,8 @@ class RetrofitJobsController < ApplicationController
 
 	def show
 		@retrofit_job = RetrofitJob.find(params[:id])
-		#@crew = Crew.find(params[:id])
-		@crew = Crew.where(:retrofit_job_id => params[:id]).last
+			@crew = Crew.find(params[:id])
+			#@crew = Crew.where(:retrofit_job_id => params[:id]).last
 		@assets = Asset.all
 
 	end
