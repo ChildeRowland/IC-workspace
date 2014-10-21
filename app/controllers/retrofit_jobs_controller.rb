@@ -43,6 +43,17 @@ class RetrofitJobsController < ApplicationController
 
 	end
 
+	def destroy
+		@retrofit_job = RetrofitJob.find(params[:id])
+		if @retrofit_job.destroy
+			flash[:notice] = "Job Deleted"
+			redirect_to retrofit_jobs_path
+		else
+			flash[:notice] = "Try Again"
+			redirect_to :back
+		end
+	end
+
 	private
 	def retrofit_job_params
 		params.require(:retrofit_job).permit(:store_number, :mall_name, :phone, :hours, :start, :finish)
