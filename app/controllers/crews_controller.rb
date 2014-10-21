@@ -18,6 +18,10 @@ class CrewsController < ApplicationController
 		end
 	end
 
+	def destroy
+		
+	end
+
 	private
 	def crew_params
 		params.require(:crew).permit(:retrofit_job_id, :asset_id)
