@@ -46,11 +46,28 @@
 	</ul>
 </div>
 
-<div>
+
+
+<div class="store-box">
+	<h4>
+		IC Crew
+	</h4>
 	<% @retrofit_job.crews.each do |c| %>
 		<%= Asset.find(c.asset_id).fname %>
+		<%= Asset.find(c.asset_id).lname %><br>
 	<% end %>
 </div>
+
+<div>
+	<%= form_for([@retrofit_job, @crew], :url => retrofit_job_crews_path(@crew), method: :create) do |f| %>
+	<%= f.label "Asset Name" %>
+	<%= f.select(:asset_id, @assets.all.collect {|a| [a.lname, a.id]}) %>
+	<%= f.submit "add to crew" %>
+	<% end %>
+</div>
+
+<%= @crew.id %>
+<%= @retrofit_job.id %>
 
 
 
