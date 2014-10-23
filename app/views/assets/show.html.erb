@@ -21,6 +21,10 @@
 		<%= @asset.rate %>
 	</p>
 
+	<% @asset.crews.each do |c| %>
+		<%= c.id %>
+	<% end %>
+
 	<%= link_to 'edit asset', edit_asset_path(@asset) %>
 
 </div>

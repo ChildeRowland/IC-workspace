@@ -1,3 +1,4 @@
+
 <div class="store-box">
 
 	<h3>
@@ -30,19 +31,28 @@
 
 	<%= button_to "Add", new_retrofit_job_contact_path(@retrofit_job), :class => "add-button", :method => :get %>
 
-	<ul>
-		<% @retrofit_job.contacts.each do |c| %>
-		<li>
-			<ul class ="contact-box">
-				<li><%= "#{c.title}:" %></li>
-				 <li><%= "#{c.fname} #{c.lname}" %></li>
-				<li><%= c.email %></li>
-				<li class="notes" ><%= simple_format(c.notes) %></li>
-				<li><%= button_to "edit contact", edit_retrofit_job_contact_path(@retrofit_job, c.id), :method => :get, :class => "edit-form" %></li>
-			</ul>
-		</li>
-		<% end %>
-	</ul>
+	<% if @retrofit_job.contacts.empty? %>
+
+		<p>
+			No Contacts yet.
+		</p>
+
+	<% else %>
+
+		<ul>
+			<% @retrofit_job.contacts.each do |c| %>
+			<li>
+				<ul class ="contact-box">
+					<li><%= "#{c.title}:" %></li>
+					 <li><%= "#{c.fname} #{c.lname}" %></li>
+					<li><%= c.email %></li>
+					<li class="notes" ><%= simple_format(c.notes) %></li>
+					<li><%= button_to "edit contact", edit_retrofit_job_contact_path(@retrofit_job, c.id), :method => :get, :class => "edit-form" %></li>
+				</ul>
+			</li>
+			<% end %>
+		</ul>
+	<% end %>
 </div>
 
 
@@ -52,29 +62,42 @@
 		IC Crew
 	</h4>
 
-		<div class="drop-form">
-			<%= form_for([@retrofit_job, @new_crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
-			<%= f.label "Select Name" %><br>
-			<%= f.select(:asset_id, Asset.all.collect {|a| [a.lname, a.id]}) %>
-			<%= f.submit "add to #{@retrofit_job.store_number}" %>
-			<% end %>
-		</div>
-
 		<% if Asset.last.nil? %>
 			<p>
 				No assets available in the IC Database, but you can <%= link_to "add some here.", new_asset_path %>
 			</p>
 		<% elsif @assets.empty? %>
+
+			<div class="drop-form">
+			<%= form_for([@retrofit_job, @new_crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
+			<%= f.label "Select Name" %><br>
+			<%= f.select(:asset_id, Asset.all.collect {|a| [a.lname, a.id]}) %>
+			<%= f.submit "add to #{@retrofit_job.store_number}" %>
+			<% end %>
+			</div>
+
 			<p>
 				No Assets assigned to this job yet.  Use the drop down list to add.
 			</p>
+
 		<% else %>
+
+			<div class="drop-form">
+			<%= form_for([@retrofit_job, @new_crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
+			<%= f.label "Select Name" %><br>
+			<%= f.select(:asset_id, Asset.all.collect {|a| [a.lname, a.id]}) %>
+			<%= f.submit "add to #{@retrofit_job.store_number}" %>
+			<% end %>
+			</div>
+
 			<ul>
-				<% @assets.each do |a| %>
+				<% @retrofit_job.crews.each do |c| %>
 					<li>
-					<%= a.fname %>
-					<%= a.lname %>
+					<%= c.asset.fname %>
+					<%= c.asset.lname %><br>
+					<%=  link_to 'view details', asset_path(c.asset.id) %>
 					</li>
+					<%= link_to 'remove from job', retrofit_job_path, method: :post, action: :remove %>
 				<% end %>
 			</ul>
 			<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job.id, @crew), method: :get, :class => "edit-form" %>

@@ -3,13 +3,13 @@ class CrewsController < ApplicationController
 	def new
 		@assets = Asset.all
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
-		@crew = @retrofit_job.crews.build(params[:crews])
+		@new_crew = @retrofit_job.crews.build(params[:crews])
 	end
 
 	def create
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
-		@crew = @retrofit_job.crews.build(crew_params)
-		if @crew.save
+		@new_crew = @retrofit_job.crews.build(crew_params)
+		if @new_crew.save
 			flash[:notice] = "Crew Updated"
 			redirect_to retrofit_job_path(@retrofit_job)
 		else
@@ -19,7 +19,16 @@ class CrewsController < ApplicationController
 	end
 
 	def destroy
-		
+		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
+		@crew = @retrofit_job.crews(params[:id])
+		if @crew.delete
+			flash[:notice] = "Asset Removed from Crew"
+			redirect_to retrofit_job_path(@retrofit_job)
+		else
+			flash[:notice] = "Try Again"
+			redirect_to :back
+		end
+
 	end
 
 	private

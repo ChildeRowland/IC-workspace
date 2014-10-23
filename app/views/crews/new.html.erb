@@ -3,7 +3,7 @@
 </h3>
 
 <div>
-	<%= form_for([@retrofit_job, @crew], method: :post) do |f| %>
+	<%= form_for([@retrofit_job, @new_crew], method: :post) do |f| %>
 	<%= f.label "Asset Name" %>
 	<%= f.select(:asset_id, @assets.all.collect {|a| [a.lname, a.id]}) %>
 	<%= f.submit "add to crew" %>

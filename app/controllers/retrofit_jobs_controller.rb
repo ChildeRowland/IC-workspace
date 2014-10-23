@@ -54,6 +54,15 @@ class RetrofitJobsController < ApplicationController
 		end
 	end
 
+	def remove
+		@retrofit_job = RetrofitJob.find(params[:id])
+		@crew = Crew.find_by(retrofit_job_id: @retrofit_job.id, asset_id: @asset.id)
+		if @crew.delete
+			flash[:notice] = "remove"
+			redirect_to retrofit_job_path
+		end
+	end
+
 	private
 	def retrofit_job_params
 		params.require(:retrofit_job).permit(:store_number, :mall_name, :phone, :hours, :start, :finish)
