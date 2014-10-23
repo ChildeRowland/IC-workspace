@@ -56,9 +56,9 @@ class RetrofitJobsController < ApplicationController
 
 	def remove
 		@retrofit_job = RetrofitJob.find(params[:id])
-		@crew = Crew.find_by(retrofit_job_id: @retrofit_job.id, asset_id: @asset.id)
+		@crew = Crew.find_by(retrofit_job_id: @retrofit_job.id, asset_id: params[:foo_params])
 		if @crew.delete
-			flash[:notice] = "remove"
+			flash[:notice] = "Asset Removed"
 			redirect_to retrofit_job_path
 		end
 	end

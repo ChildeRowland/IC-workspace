@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :retrofit_jobs do
+    member do
+      post :remove
+    end
     resources :contacts
     resources :crews
   end

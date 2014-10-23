@@ -97,7 +97,7 @@
 					<%= c.asset.lname %><br>
 					<%=  link_to 'view details', asset_path(c.asset.id) %>
 					</li>
-					<%= link_to 'remove from job', retrofit_job_path, method: :post, action: :remove %>
+					<%= link_to 'remove from job', remove_retrofit_job_path(foo_params: c.asset.id), method: :post, action: :remove %>
 				<% end %>
 			</ul>
 			<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job.id, @crew), method: :get, :class => "edit-form" %>
