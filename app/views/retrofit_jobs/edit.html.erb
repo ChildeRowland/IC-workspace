@@ -16,8 +16,12 @@
 		<%= f.date_select :start, :order => [:month, :day, :year] %><br>
 		<%= f.label "finish date" %><br>
 		<%= f.date_select :finish, :order => [:month, :day, :year] %><br>
-		<%= f.submit :update %>
-	<% end %>
+
+		<div class="multi-input">
+			<%= f.submit :update, :class => "submit-button submit" %>
+			<% end %>
+			<%= button_to "cancel", retrofit_job_path, method: :get, :class => "submit-button cancel" %>
+		</div>
 </div>
 
 <div>
