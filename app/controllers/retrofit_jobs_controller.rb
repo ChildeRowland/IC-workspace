@@ -1,5 +1,8 @@
 class RetrofitJobsController < ApplicationController
 
+	before_filter :check_for_cancel, :only => [:create, :update]
+
+
 	def index
 		@retrofit_jobs = RetrofitJob.all
 	end
@@ -68,4 +71,9 @@ class RetrofitJobsController < ApplicationController
 		params.require(:retrofit_job).permit(:store_number, :mall_name, :phone, :hours, :start, :finish)
 	end
 
+	def check_for_cancel
+	  if params[:retrofit_job] == "cancel"
+	    redirect_to :back
+	  end
+	end
 end
