@@ -17,6 +17,20 @@
 		<%= simple_format(@retrofit_job.hours) %>
 	</p>
 	<p>
+		Location:
+		<br>
+		<%= @retrofit_job.address.line_one %>
+			<% if !@retrofit_job.address.line_two.empty? %>
+				<br>
+				<%= @retrofit_job.address.line_two %>
+			<% end %>
+			<br>
+		<%= "#{@retrofit_job.address.city}, #{@retrofit_job.address.state} #{@retrofit_job.address.zip}" %>
+	</p>
+	<p>
+		<%= link_to "#{@retrofit_job.store_number} Web Page", "#{@retrofit_job.url}", target: 'blank' %>
+	</p>
+	<p>
 		Site Visit:
 		<br>
 		<%= "#{@retrofit_job.start.strftime("%B, %d %Y")} through #{@retrofit_job.finish.strftime("%B, %d %Y")}" %>

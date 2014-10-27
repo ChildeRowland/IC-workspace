@@ -11,12 +11,27 @@
 			<%= f.text_field :mall_name %>
 			<%= f.label "phone number" %>
 			<%= f.text_field :phone %>
+			<%= f.label "web site" %>
+			<%= f.text_field :url %>
 			<%= f.label "store hours" %>
 			<%= f.text_area :hours %>
 			<%= f.label "start date", {:class => "form-dates"} %>
 			<%= f.date_select :start, :order => [:month, :day, :year] %><br>
 			<%= f.label "finish date", {:class => "form-dates"} %>
 			<%= f.date_select :finish, :order => [:month, :day, :year] %><br>
+
+				<%= f.fields_for :address do |a| %>
+					<%= a.label "line one" %>
+					<%= a.text_field :line_one %>
+					<%= a.label"line two" %>
+					<%= a.text_field :line_two %>
+					<%= a.label "city" %>
+					<%= a.text_field :city %>
+					<%= a.label "state" %>
+					<%= a.text_field :state %>
+					<%= a.label "zip code" %>
+					<%= a.text_field :zip %>
+				<% end %>
 	</div>
 		<div class="multi-input">
 			<%= f.submit :submit, {:class => "submit-button submit" } %>

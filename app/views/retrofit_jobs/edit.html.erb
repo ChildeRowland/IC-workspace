@@ -17,6 +17,19 @@
 		<%= f.label "finish date" %><br>
 		<%= f.date_select :finish, :order => [:month, :day, :year] %><br>
 
+			<%= f.fields_for :address do |a| %>
+					<%= a.label "line one" %>
+					<%= a.text_field :line_one %>
+					<%= a.label"line two" %>
+					<%= a.text_field :line_two %>
+					<%= a.label "city" %>
+					<%= a.text_field :city %>
+					<%= a.label "state" %>
+					<%= a.text_field :state %>
+					<%= a.label "zip code" %>
+					<%= a.text_field :zip %>
+				<% end %>
+
 		<div class="multi-input">
 			<%= f.submit :update, :class => "submit-button submit" %>
 			<% end %>

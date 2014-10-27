@@ -9,13 +9,13 @@ class RetrofitJobsController < ApplicationController
 
 	def new
 		@retrofit_job = RetrofitJob.new
+		@retrofit_job.build_address
 	end
 
 	def create
 		@retrofit_job = RetrofitJob.create(retrofit_job_params)
 		if @retrofit_job.save
 			flash[:notice] = "Store Added"
-			#redirect_to action: "show"
 			redirect_to retrofit_job_path(@retrofit_job)
 		else
 			flash[:notice] = "Try Again"
@@ -68,7 +68,7 @@ class RetrofitJobsController < ApplicationController
 
 	private
 	def retrofit_job_params
-		params.require(:retrofit_job).permit(:store_number, :mall_name, :phone, :hours, :start, :finish)
+		params.require(:retrofit_job).permit(:store_number, :mall_name, :phone, :url, :hours, :start, :finish, address_attributes: [:line_one, :line_two, :city, :state, :zip])
 	end
 
 	def check_for_cancel

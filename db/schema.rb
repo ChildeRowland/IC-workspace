@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020164713) do
+ActiveRecord::Schema.define(version: 20141027192732) do
+
+  create_table "addresses", force: true do |t|
+    t.integer  "retrofit_job_id"
+    t.string   "line_one"
+    t.string   "line_two"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "assets", force: true do |t|
     t.string   "fname"
@@ -55,6 +66,7 @@ ActiveRecord::Schema.define(version: 20141020164713) do
     t.string   "mall_name"
     t.string   "phone"
     t.text     "hours"
+    t.string   "url"
     t.date     "start"
     t.date     "finish"
     t.datetime "created_at"
