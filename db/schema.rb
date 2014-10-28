@@ -14,7 +14,8 @@
 ActiveRecord::Schema.define(version: 20141027192732) do
 
   create_table "addresses", force: true do |t|
-    t.integer  "retrofit_job_id"
+    t.integer  "locatable_id"
+    t.string   "locatable_type"
     t.string   "line_one"
     t.string   "line_two"
     t.string   "city"
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 20141027192732) do
     t.string   "phone"
     t.text     "hours"
     t.string   "url"
+    t.integer  "sqft"
     t.date     "start"
     t.date     "finish"
     t.datetime "created_at"

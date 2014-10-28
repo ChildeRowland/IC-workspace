@@ -6,6 +6,7 @@ class CreateRetrofitJobs < ActiveRecord::Migration
     	t.string :phone
     	t.text :hours
       t.string :url
+      t.integer :sqft
     	t.date :start
     	t.date :finish
       t.timestamps

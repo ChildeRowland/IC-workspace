@@ -1,12 +1,16 @@
 class AssetsController < ApplicationController
 
+
 	def index
 		@assets = Asset.all
 	end
 
+
 	def new
 		@asset = Asset.new
+		@asset.build_address
 	end
+
 
 	def create
 		@asset = Asset.create(asset_params)
@@ -19,13 +23,16 @@ class AssetsController < ApplicationController
 		end
 	end
 
+
 	def show
 		@asset = Asset.find(params[:id])
 	end
 
+
 	def edit
 		@asset = Asset.find(params[:id])
 	end
+
 
 	def update
 		@asset = Asset.find(params[:id])
@@ -37,6 +44,7 @@ class AssetsController < ApplicationController
 			redirect_to :back
 		end
 	end
+
 
 	def destroy
 		@asset = Asset.find(params[:id])
@@ -51,8 +59,9 @@ class AssetsController < ApplicationController
 
 
 	private
+
 	def asset_params
-		params.require(:asset).permit(:fname, :mname, :lname, :dob, :phone, :email, :rate)
+		params.require(:asset).permit(:fname, :mname, :lname, :dob, :phone, :email, :rate, address_attributes: [:line_one, :line_two, :city, :state, :zip])
 	end
 
 end

@@ -1,7 +1,8 @@
 class CreateAddresses < ActiveRecord::Migration
   def change
     create_table :addresses do |t|
-      t.integer :retrofit_job_id
+      t.integer :locatable_id 
+      t.string :locatable_type
     	t.string :line_one
     	t.string :line_two
     	t.string :city

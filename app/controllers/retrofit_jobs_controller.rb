@@ -1,16 +1,16 @@
 class RetrofitJobsController < ApplicationController
 
-	before_filter :check_for_cancel, :only => [:create, :update]
-
 
 	def index
 		@retrofit_jobs = RetrofitJob.all
 	end
 
+
 	def new
 		@retrofit_job = RetrofitJob.new
 		@retrofit_job.build_address
 	end
+
 
 	def create
 		@retrofit_job = RetrofitJob.create(retrofit_job_params)
@@ -23,9 +23,11 @@ class RetrofitJobsController < ApplicationController
 		end
 	end
 
+
 	def edit
 		@retrofit_job = RetrofitJob.find(params[:id])
 	end
+
 
 	def update
 		@retrofit_job = RetrofitJob.find(params[:id])
@@ -38,6 +40,7 @@ class RetrofitJobsController < ApplicationController
 		end
 	end
 
+
 	def show
 		@retrofit_job = RetrofitJob.find(params[:id])
 		@new_crew = @retrofit_job.crews.build(params[:crew])
@@ -45,6 +48,7 @@ class RetrofitJobsController < ApplicationController
 		@assets = @retrofit_job.assets.all
 
 	end
+
 
 	def destroy
 		@retrofit_job = RetrofitJob.find(params[:id])
@@ -57,6 +61,7 @@ class RetrofitJobsController < ApplicationController
 		end
 	end
 
+
 	def remove
 		@retrofit_job = RetrofitJob.find(params[:id])
 		@crew = Crew.find_by(retrofit_job_id: @retrofit_job.id, asset_id: params[:foo_params])
@@ -66,14 +71,11 @@ class RetrofitJobsController < ApplicationController
 		end
 	end
 
+
 	private
+	
 	def retrofit_job_params
-		params.require(:retrofit_job).permit(:store_number, :mall_name, :phone, :url, :hours, :start, :finish, address_attributes: [:line_one, :line_two, :city, :state, :zip])
+		params.require(:retrofit_job).permit(:store_number, :mall_name, :phone, :url, :sqft, :hours, :start, :finish, address_attributes: [:line_one, :line_two, :city, :state, :zip])
 	end
 
-	def check_for_cancel
-	  if params[:retrofit_job] == "cancel"
-	    redirect_to :back
-	  end
-	end
 end

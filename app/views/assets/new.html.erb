@@ -2,22 +2,43 @@
 	New Asset Page
 </h3>
 
-<div>
-	<%= form_for(@asset, methed: :post) do |f| %>
+<div class="all-forms">
+	<%= form_for(@asset, method: :post) do |f| %>
 		<%= f.label "first name" %>
-		<%= f.text_field :fname %><br>
+		<%= f.text_field :fname %>
 		<%= f.label "middle name" %>
-		<%= f.text_field :mname %><br>
+		<%= f.text_field :mname %>
 		<%= f.label "last name" %>
-		<%= f.text_field :lname %><br>
+		<%= f.text_field :lname %>
 		<%= f.label "DOB" %>
-		<%= f.text_field :dob %><br>
+		<%= f.date_field :dob %>
 		<%= f.label "phone number" %>
-		<%= f.text_field :phone %><br>
+		<%= f.text_field :phone %>
 		<%= f.label "email" %>
-		<%= f.text_field :email %><br>
-		<%= f.label "Rate/Role" %>
-		<%= f.text_field :rate %><br>
-		<%= f.submit "new asset" %>
+		<%= f.text_field :email %>
+
+		<%= f.fields_for :address do |a| %>
+			<%= a.label "line_one" %>
+			<%= a.text_field :line_one %>
+			<%= a.label "line_two" %>
+			<%= a.text_field :line_two %>
+			<%= a.label "city" %>
+			<%= a.text_field :city %>
+			<%= a.label "state" %>
+			<%= a.text_field :state %>
+			<%= a.label "zip" %>
+			<%= a.text_field :zip %>
+		<% end %>
+
+	<%= f.label "Rate/Role" %>
+	<%= f.text_field :rate %>
+
+	<div class="multi-input">
+		<%= f.submit :submit, {:class => "submit-button submit"} %>
 	<% end %>
+		
+	</div>
+	
+	<%= button_to "cancel", :back, method: :get, :class => "submit-button cancel" %>
+
 </div>

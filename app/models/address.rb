@@ -1,6 +1,5 @@
 class Address < ActiveRecord::Base
 
-	belongs_to :asset
-	belongs_to :retrofit_job
+	belongs_to :locatable, polymorphic: true
 
 end

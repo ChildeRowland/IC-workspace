@@ -2,22 +2,27 @@
 	Edit Store Infomation
 </h3>
 
-<div>
-	<%= form_for(@retrofit_job, method: :patch) do |f| %>
-		<%= f.label "store number" %><br>
-		<%= f.text_field :store_number %><br>
-		<%= f.label "mall name" %><br>
-		<%= f.text_field :mall_name %><br>
-		<%= f.label "store phone number" %><br>
-		<%= f.text_field :phone %><br>
-		<%= f.label "store hours" %><br>
-		<%= f.text_area :hours %><br>
-		<%= f.label "start date" %><br>
-		<%= f.date_select :start, :order => [:month, :day, :year] %><br>
-		<%= f.label "finish date" %><br>
-		<%= f.date_select :finish, :order => [:month, :day, :year] %><br>
+<div class="all-forms">
+	<div>
+		<%= form_for(@retrofit_job, method: :patch) do |f| %>
+			<%= f.label "store number" %>
+			<%= f.text_field :store_number %>
+			<%= f.label "mall name" %>
+			<%= f.text_field :mall_name %>
+			<%= f.label "store area" %>
+			<%= f.text_field :sqft %>
+			<%= f.label "store phone number" %>
+			<%= f.text_field :phone %>
+			<%= f.label "web site" %>
+			<%= f.text_field :url %>
+			<%= f.label "store hours" %>
+			<%= f.text_area :hours %>
+			<%= f.label "start date", {:class => "form-dates"} %>
+			<%= f.date_select :start, :order => [:month, :day, :year] %><br>
+			<%= f.label "finish date", {:class => "form-dates"} %>
+			<%= f.date_select :finish, :order => [:month, :day, :year] %><br>
 
-			<%= f.fields_for :address do |a| %>
+				<%= f.fields_for :address do |a| %>
 					<%= a.label "line one" %>
 					<%= a.text_field :line_one %>
 					<%= a.label"line two" %>
@@ -33,10 +38,13 @@
 		<div class="multi-input">
 			<%= f.submit :update, :class => "submit-button submit" %>
 			<% end %>
-			<%= button_to "cancel", retrofit_job_path, method: :get, :class => "submit-button cancel" %>
+	
 		</div>
-</div>
 
-<div>
-	<%= button_to "DELETE STORE", retrofit_job_path, action: :destroy, method: :delete %>
+			<%= button_to "cancel", :back, method: :get, :class => "submit-button cancel" %>
+
+			<%= button_to "DELETE STORE", retrofit_job_path, action: :destroy, method: :delete, :class => "submit-button"%>
+
+	</div>
+
 </div>
