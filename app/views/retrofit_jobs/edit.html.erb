@@ -43,7 +43,7 @@
 
 			<%= button_to "cancel", :back, method: :get, :class => "submit-button cancel" %>
 
-			<%= button_to "DELETE STORE", retrofit_job_path, action: :destroy, method: :delete, :class => "submit-button"%>
+			<%= button_to "delete store", retrofit_job_path, action: :destroy, method: :delete, :class => "submit-button delete", data: {confirm: "You are about to delete #{@retrofit_job.store_number} and all of its data. Continue?",} %>
 
 	</div>
 

@@ -1,23 +1,32 @@
 <h3>
-	<%= "Edit the contact info for #{@retrofit_job.store_number} " %>
+	<%= "Edit Contact at #{@retrofit_job.store_number} #{@retrofit_job.mall_name}" %>
 </h3>
 
-<div>
+<div class="all-forms">
 	<%= form_for([@retrofit_job, @contact], method: :patch) do |f| %>
-		<%= f.label "job title" %><br>
-		<%= f.text_field :title %><br>
-		<%= f.label "first name" %><br>
-		<%= f.text_field :fname %><br>
-		<%= f.label "last name" %><br>
-		<%= f.text_field :lname %><br>
-		<%= f.label "email" %><br>
-		<%= f.text_field :email %><br>
-		<%= f.label "notes" %><br>
-		<%= f.text_area :notes %><br>
-		<%= f.submit "update contact" %>
+		<%= f.label "job title" %>
+		<%= f.text_field :title %>
+		<%= f.label "first name" %>
+		<%= f.text_field :fname %>
+		<%= f.label "last name" %>
+		<%= f.text_field :lname %>
+		<%= f.label "email" %>
+		<%= f.text_field :email %>
+		<%= f.label "notes" %>
+		<%= f.text_area :notes %>
+
+		<div class="multi-input">
+
+			<%= f.submit "update contact", :class => "submit-button submit" %>
+	
 	<% end %>
+
+		</div>
+
+	<%= button_to "cancel", :back, method: :get, :class => "submit-button cancel" %>
+
+	<%= button_to 'remove contact', retrofit_job_contact_path, method: :delete, :class => "submit-button delete", data: {confirm: "You are about to remove #{@contact.fname} from store #{@retrofit_job.store_number}, continue?"} %>
+
 </div>
 
-<%= javascript_include_tag "application" %>
-<%= link_to 'remove contact', retrofit_job_contact_path, confirm: "Remove Contact?", method: :delete %>
 

@@ -41,6 +41,6 @@
 
 	<%= button_to "cancel", :back, method: :get, :class => "submit-button cancel" %>
 
-	<%= button_to "delete asset", asset_path, method: :delete, :class => "submit-button" %>
+	<%= button_to "delete asset", asset_path, method: :delete, :class => "submit-button delete", data: {confirm: "You are about to delete #{@asset.fname}, continue?",} %>
 
 </div>
