@@ -58,8 +58,8 @@
 			<li>
 				<ul class ="contact-box">
 					<li><%= "#{c.title}:" %></li>
-					 <li><%= "#{c.fname} #{c.lname}" %></li>
-					<li><%= mail_to "#{c.email}" %></li>
+					<li><%= "#{c.fname} #{c.lname}" %></li>
+					<li><%= mail_to("#{c.email}", name = nil, html_options = {bcc: "chris@invisiblecircus.net", subject: "#{@retrofit_job.store_number} #{@retrofit_job.mall_name} LED Retrofit"}) %></li>
 					<li class="notes" ><%= simple_format(c.notes) %></li>
 					<li><%= button_to "edit contact", edit_retrofit_job_contact_path(@retrofit_job, c.id), :method => :get, :class => "edit-form" %></li>
 				</ul>
