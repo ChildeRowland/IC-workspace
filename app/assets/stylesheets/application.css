@@ -27,8 +27,38 @@ body ul {
 }
 
 h1 {
-	font-size: 45px;
+	font-size: 40px;
 }
+
+/* Main Navigation */
+nav {
+	position: relative;
+	z-index: 9999;
+	position: fixed;
+	margin: 5px;
+	right: 0;
+	top: 0;
+	max-width: 150px;
+}
+nav > ul {
+	margin-left: -25px;
+}
+nav > ul > li {
+}
+nav > ul > li > a {}
+
+nav> ul > li:hover > ul { 
+	display:block; 
+}
+
+nav > ul > li > ul { 
+	display:none;
+	margin-left: -40px;
+}
+nav > ul > li > ul > li {
+	z-index: 9999;
+}
+nav > ul > li > ul > li > a {}
 
 /* Validation Messages */
 .validation-messages {
