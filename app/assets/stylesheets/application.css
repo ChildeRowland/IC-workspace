@@ -18,12 +18,21 @@ body {
 	font-family: Lucida Grande;
 }
 
+body ul {
+	list-style: none;
+}
+
 .wrapper {
 	margin: 2px;
 }
 
 h1 {
 	font-size: 45px;
+}
+
+/* Validation Messages */
+.validation-messages {
+	background-color: rgb(255, 216, 173);
 }
 
 /* Divs for retrofit store catogories. */
@@ -174,5 +183,10 @@ h1 {
 
 .submit-button.cancel {
 	background-color: rgb(255, 250, 165);
+}
+
+.submit-button.delete {
+	background-color: rgb(123, 123, 123);
+	color: rgb(89, 12, 12);
 }
 

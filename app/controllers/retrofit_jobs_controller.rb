@@ -19,7 +19,7 @@ class RetrofitJobsController < ApplicationController
 			redirect_to retrofit_job_path(@retrofit_job)
 		else
 			flash[:notice] = "Try Again"
-			redirect_to :back
+			render :new
 		end
 	end
 
@@ -36,7 +36,7 @@ class RetrofitJobsController < ApplicationController
 			redirect_to retrofit_job_path(params[:id])
 		else
 			flash[:notice] = "Try Again"
-			redirect_to :back
+			render :edit
 		end
 	end
 

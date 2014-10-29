@@ -6,4 +6,8 @@ class Asset < ActiveRecord::Base
 	has_one :address, as: :locatable, :dependent => :destroy
 	accepts_nested_attributes_for :address
 
+	def first_and_last_name
+		"#{fname} #{lname}"
+	end
+
 end

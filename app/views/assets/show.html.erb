@@ -10,11 +10,11 @@
 	<p>
 		Contact:<br>
 		<%= @asset.phone %><br>
-		<%= @asset.email %>
+		<%= mail_to("#{@asset.email}", name = nil) %>
 	</p>
 	<p>
 		Date of birth:<br>
-		<%= @asset.dob %>
+		<%= @asset.dob.strftime("%B, %d %Y") %>
 	</p>
 	<p>
 		Rate Type:<br>
@@ -28,3 +28,4 @@
 	<%= link_to 'edit asset', edit_asset_path(@asset) %>
 
 </div>
+

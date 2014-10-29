@@ -1,3 +1,14 @@
+<% if @retrofit_job.errors.any? %>
+	<div class="validation-messages">
+		<ul>
+			<% @retrofit_job.errors.each do | field, msg| %>
+				<li><%= msg %></li><br>
+   			<% end %>
+   		</ul>
+   	</div>
+<% end %>
+
+
 <h3>
 	Add A New Retofit Project
 </h3>
@@ -5,11 +16,11 @@
 <div class="all-forms">
 	<%= form_for(@retrofit_job, method: :post) do |f| %>
 		<%= f.label "store number" %>
-		<%= f.text_field :store_number %>
+		<%= f.text_field :store_number, placeholder: "enter 3 digits" %>
 		<%= f.label "mall name" %>
 		<%= f.text_field :mall_name %>
 		<%= f.label "store area" %>
-		<%= f.text_field :sqft %>
+		<%= f.text_field :sqft, placeholder: "sales sf, subtract non-sell" %>
 		<%= f.label "phone number" %>
 		<%= f.text_field :phone %>
 		<%= f.label "web site" %>
@@ -40,7 +51,7 @@
 		
 		</div>
 		
-	<%= button_to "cancel", :back, method: :get, :class => "submit-button cancel" %>
+	<%= button_to "cancel", retrofit_jobs_path, method: :get, :class => "submit-button cancel" %>
 		
 </div>
 

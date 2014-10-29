@@ -1,3 +1,13 @@
+<% if @retrofit_job.errors.any? %>
+	<div class="validation-messages">
+		<ul>
+			<% @retrofit_job.errors.each do | field, msg| %>
+				<li><%= msg %></li><br>
+   			<% end %>
+   		</ul>
+   	</div>
+<% end %>
+
 <h3>
 	Edit Store Infomation
 </h3>
@@ -41,7 +51,7 @@
 	
 		</div>
 
-			<%= button_to "cancel", :back, method: :get, :class => "submit-button cancel" %>
+			<%= button_to "cancel", retrofit_job_path, method: :get, :class => "submit-button cancel" %>
 
 			<%= button_to "delete store", retrofit_job_path, action: :destroy, method: :delete, :class => "submit-button delete", data: {confirm: "You are about to delete #{@retrofit_job.store_number} and all of its data. Continue?",} %>
 
