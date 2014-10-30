@@ -37,20 +37,27 @@ h1 {
 
 /* Main Navigation */
 nav {
+	background-color: rgb(255, 231, 250);
 	position: relative;
 	z-index: 9999;
 	position: fixed;
-	margin: 5px;
+	margin: 2px;
 	right: 0;
 	top: 0;
 	width: 135px;
 }
+
 nav > ul {
 	margin-left: -25px;
 }
+
 nav > ul > li {
+	color: black;
 }
-nav > ul > li > a {}
+
+nav > ul > li > a {
+	text-decoration: none;
+}
 
 nav> ul > li:hover > ul { 
 	display:block; 
@@ -62,8 +69,11 @@ nav > ul > li > ul {
 }
 nav > ul > li > ul > li {
 	z-index: 9999;
+	padding: 2px;
 }
-nav > ul > li > ul > li > a {}
+nav > ul > li > ul > li > a {
+	text-decoration: none;
+}
 
 /* Validation Messages */
 .validation-messages {
@@ -74,7 +84,7 @@ nav > ul > li > ul > li > a {}
 
 .store-box {
 	background-color: rgb(210, 237, 236);
-	max-width: 49%;
+	width: 49%;
 	padding: 10px 10px 30px 10px;
 	margin: 0px 0px 10px 0px;
 }
@@ -117,6 +127,7 @@ nav > ul > li > ul > li > a {}
 	box-shadow: 5px 7px 2px #888888;
 }
 
+
 /* Button Styling */
 
 .add-button {
@@ -155,7 +166,7 @@ nav > ul > li > ul > li > a {}
 	color: white;
 	clear: none;
 	display: inline;
-	width: inherit;
+	/*width: inherit;*/
 	float: right;
 }
 
@@ -223,6 +234,23 @@ nav > ul > li > ul > li > a {}
 .submit-button.delete {
 	background-color: rgb(123, 123, 123);
 	color: rgb(89, 12, 12);
+}
+
+
+@media all and (max-width: 500px) {
+
+	.store-box {
+		width: 95%;
+	}
+
+	.drop-form {
+		margin: -70px 10px 30px 0px;
+	}
+
+	.add-button {
+		margin: -55px 10px 0px 0px;
+	}
+
 }
 
 /* Footer */

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :assets do
   end
 
+  resources :resources, only: [:index]
+
   # resources :sites do
   #   resources :inventories
   # end

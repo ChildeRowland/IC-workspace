@@ -1,0 +1,49 @@
+// Place all the styles related to the Resources controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.left-column {
+	width: 50%;
+	float: left;
+	background-color: lightgrey;
+}
+
+.contact-card {
+	background-color: rgb(240, 242, 255);
+	margin: 4px;
+	padding: 4px;
+}
+
+.right-column {
+	width: 45%;
+	display: inline;
+	float: left;
+	background-color: lightgrey;
+	margin: 0 0 0 15px;
+}
+
+.helpful-links {
+	background-color: rgb(245, 211, 227);
+	margin: 4px;
+	padding: 4px;
+}
+
+
+@media all and (max-width: 500px) {
+
+	.left-column { 
+		width: 90%;
+	}
+
+	.right-column {
+		width: 90%;
+		display: block;
+		clear: both;
+		margin: 4px 0 0 0;
+	}
+
+}
+
+
+
+
