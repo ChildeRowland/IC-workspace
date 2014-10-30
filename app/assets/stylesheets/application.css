@@ -272,7 +272,7 @@ nav > ul > li > ul > li > a {
 }
 
 
-@media (min-width: 320px) and (max-width: 600px) {
+@media all and (min-width: 320px) and (max-width: 600px) {
 
 	.to-the-left, .to-the-right {
 		width: 95%;
