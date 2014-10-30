@@ -1,136 +1,179 @@
 
-<div class="store-box">
+<div class="to-the-left">
+	<div class="store-box">
 
-	<h3>
-		<%= "#{@retrofit_job.store_name_and_number} Project Page" %>
-	</h3>
+		<h3>
+			<%= "#{@retrofit_job.store_name_and_number} Project Page" %>
+		</h3>
 
 
-	<p>
-		phone number: 
-		<br>
-		<%= @retrofit_job.phone %>
-	</p>
+		<p>
+			phone number: 
+			<br>
+			<%= @retrofit_job.phone %>
+		</p>
 
-	<p>
-		Store Hours:
-		<br>
-		<%= simple_format(@retrofit_job.hours) %>
-	</p>
+		<p>
+			Store Hours:
+			<br>
+			<%= simple_format(@retrofit_job.hours) %>
+		</p>
 
-	<p>
-		Location:
-		<br>
-		<% if @retrofit_job.address.city.empty? %>
+		<p>
+			Location:
+			<br>
+			<% if @retrofit_job.address.city.empty? %>
 
-		Address is missing or incomplete
+			Address is missing or incomplete
 
-		<% else %>
+			<% else %>
 
-			<%= @retrofit_job.address.line_one %>
-				<% if !@retrofit_job.address.line_two.empty? %>
+				<%= @retrofit_job.address.line_one %>
+					<% if !@retrofit_job.address.line_two.empty? %>
+						<br>
+						<%= @retrofit_job.address.line_two %>
+					<% end %>
 					<br>
-					<%= @retrofit_job.address.line_two %>
-				<% end %>
-				<br>
-			<%= "#{@retrofit_job.address.city}, #{@retrofit_job.address.state} #{@retrofit_job.address.zip}" %><br>
-			<%= link_to 'View Google Map', "http://maps.google.com?q=#{@retrofit_job.google_maps_format}", :target => "blank" %>
-		<% end %>
-	</p>
-
-	<% if !@retrofit_job.url.empty? %>
-		<p>
-			<%= link_to "#{@retrofit_job.store_number} Web Page", "#{@retrofit_job.url}", target: 'blank' %>
-		</p>
-	<% end %>
-
-	<p>
-		Site Visit:
-		<br>
-		<%= "#{@retrofit_job.start.strftime("%B, %d %Y")} through #{@retrofit_job.finish.strftime("%B, %d %Y")}" %>
-	</p>
-	<%= button_to "Edit Store", edit_retrofit_job_path(@retrofit_job), method: :get, :class => "edit-form" %>
-</div>
-
-<div class="store-box with-button">
-	<h4>
-		Store Contacts
-	</h4>
-
-	<%= button_to "Add", new_retrofit_job_contact_path(@retrofit_job), :class => "add-button", :method => :get %>
-
-	<% if @retrofit_job.contacts.empty? %>
-
-		<p>
-			No Contacts yet.
-		</p>
-
-	<% else %>
-
-		<ul>
-			<% @retrofit_job.contacts.each do |c| %>
-			<li>
-				<ul class ="contact-box">
-					<li><%= "#{c.title}:" %></li>
-					<li><%= "#{c.fname} #{c.lname}" %></li>
-					<li><%= mail_to("#{c.email}", name = nil, html_options = {bcc: "chris@invisiblecircus.net", subject: "#{@retrofit_job.store_name_and_number} LED Retrofit"}) %></li>
-					<li class="notes" ><%= simple_format(c.notes) %></li>
-					<li><%= button_to "edit contact", edit_retrofit_job_contact_path(@retrofit_job, c.id), :method => :get, :class => "edit-form" %></li>
-				</ul>
-			</li>
+				<%= "#{@retrofit_job.address.city}, #{@retrofit_job.address.state} #{@retrofit_job.address.zip}" %><br>
+				<%= link_to 'View Google Map', "http://maps.google.com?q=#{@retrofit_job.google_maps_format}", :target => "blank" %>
 			<% end %>
-		</ul>
-	<% end %>
-</div>
+		</p>
 
-
-
-<div class="store-box with-button">
-	<h4>
-		IC Crew
-	</h4>
-
-		<% if Asset.last.nil? %>
+		<% if !@retrofit_job.url.empty? %>
 			<p>
-				No assets available in the IC Database, but you can <%= link_to "add some here.", new_asset_path %>
+				<%= link_to "#{@retrofit_job.store_number} Web Page", "#{@retrofit_job.url}", target: 'blank' %>
 			</p>
-		<% elsif @assets.empty? %>
+		<% end %>
 
-			<div class="drop-form">
-			<%= form_for([@retrofit_job, @new_crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
-			<%= f.label "Select Name" %><br>
-			<%= f.select(:asset_id, Asset.all.collect {|a| [a.first_and_last_name, a.id]}) %>
-			<%= f.submit "add to #{@retrofit_job.store_number}" %>
-			<% end %>
-			</div>
+		<p>
+			Site Visit:
+			<br>
+			<%= "#{@retrofit_job.start.strftime("%B, %d %Y")} through #{@retrofit_job.finish.strftime("%B, %d %Y")}" %>
+		</p>
+		<%= button_to "Edit Store", edit_retrofit_job_path(@retrofit_job), method: :get, :class => "edit-form" %>
+	</div>
+
+	<div class="store-box with-button">
+		<h4>
+			Store Contacts
+		</h4>
+
+		<%= button_to "Add", new_retrofit_job_contact_path(@retrofit_job), :class => "add-button", :method => :get %>
+
+		<% if @retrofit_job.contacts.empty? %>
 
 			<p>
-				No Assets assigned to this job yet.  Use the drop down list to add.
+				No Contacts yet.
 			</p>
 
 		<% else %>
-
-			<div class="drop-form">
-			<%= form_for([@retrofit_job, @new_crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
-			<%= f.label "Select Name" %><br>
-			<%= f.select(:asset_id, Asset.all.collect {|a| [a.first_and_last_name, a.id]}) %>
-			<%= f.submit "add to #{@retrofit_job.store_number}" %>
-			<% end %>
-			</div>
 
 			<ul>
-				<% @retrofit_job.crews.each do |c| %>
-					<li>
-					<%= c.asset.fname %>
-					<%= c.asset.lname %><br>
-					<%=  link_to 'view details', asset_path(c.asset.id) %>
-					</li>
-					<%= link_to 'remove from job', remove_retrofit_job_path(foo_params: c.asset.id), method: :post, action: :remove, data: {confirm: "Remove this Asset from the job?"} %>
+				<% @retrofit_job.contacts.each do |c| %>
+				<li>
+					<ul class ="contact-box">
+						<li><%= "#{c.title}:" %></li>
+						<li><%= "#{c.fname} #{c.lname}" %></li>
+						<li><%= mail_to("#{c.email}", name = nil, html_options = {bcc: "chris@invisiblecircus.net", subject: "#{@retrofit_job.store_name_and_number} LED Retrofit"}) %></li>
+						<li class="notes" ><%= simple_format(c.notes) %></li>
+						<li><%= button_to "edit contact", edit_retrofit_job_contact_path(@retrofit_job, c.id), :method => :get, :class => "edit-form" %></li>
+					</ul>
+				</li>
 				<% end %>
 			</ul>
-			<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job.id, @crew), method: :get, :class => "edit-form" %>
 		<% end %>
+	</div>
+
+
+
+	<div class="store-box with-button">
+		<h4>
+			IC Crew
+		</h4>
+
+			<% if Asset.last.nil? %>
+				<p>
+					No assets available in the IC Database, but you can <%= link_to "add some here.", new_asset_path %>
+				</p>
+			<% elsif @assets.empty? %>
+
+				<div class="drop-form">
+				<%= form_for([@retrofit_job, @new_crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
+				<%= f.label "Select Name" %><br>
+				<%= f.select(:asset_id, Asset.all.collect {|a| [a.first_and_last_name, a.id]}) %>
+				<%= f.submit "add to #{@retrofit_job.store_number}" %>
+				<% end %>
+				</div>
+
+				<p>
+					No Assets assigned to this job yet.  Use the drop down list to add.
+				</p>
+
+			<% else %>
+
+				<div class="drop-form">
+				<%= form_for([@retrofit_job, @new_crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
+				<%= f.label "Select Name" %><br>
+				<%= f.select(:asset_id, Asset.all.collect {|a| [a.first_and_last_name, a.id]}) %>
+				<%= f.submit "add to #{@retrofit_job.store_number}" %>
+				<% end %>
+				</div>
+
+				<ul>
+					<% @retrofit_job.crews.each do |c| %>
+						<li>
+						<%= c.asset.fname %>
+						<%= c.asset.lname %><br>
+						<%=  link_to 'view details', asset_path(c.asset.id) %>
+						</li>
+						<%= link_to 'remove from job', remove_retrofit_job_path(foo_params: c.asset.id), method: :post, action: :remove, data: {confirm: "Remove this Asset from the job?"} %>
+					<% end %>
+				</ul>
+				<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job, @crew), method: :get, :class => "edit-form" %>
+			<% end %>
+	</div>
 </div>
+
+
+<div class="to-the-right">
+	<div class="store-box with-button to-do-list">
+		<h4>
+			To Do List
+		</h4>
+
+		<%= button_to "Add", new_retrofit_job_task_path(@retrofit_job), method: :get, :class => "add-button" %>
+
+		<% if @retrofit_job.tasks.empty? %>
+			<p>
+				No Tasks yet.
+			</p>
+
+		<% else %>
+
+			<ul>
+				<% @retrofit_job.tasks.each do |t| %>
+					<li>
+						<%= t.title %>
+					</li>
+					<li>
+						<%= t.description %>
+					</li>
+					<li>
+						<%= simple_format(t.notes) %>
+					</li>
+					<%= content_tag :li, class: "#{t.status}" do -%>
+						<%= t.status %>
+					<% end -%>
+					<li>
+						<%= button_to "edit task", edit_retrofit_job_task_path(@retrofit_job, t.id), method: :get, :class => "edit-form" %>
+					</li>
+				<% end %>
+			</ul>
+		<% end %>
+
+	</div>
+</div>
+
 
 
 

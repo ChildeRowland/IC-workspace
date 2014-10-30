@@ -10,7 +10,7 @@
 		<%= f.text_field :description %>
 		<%= f.label "notes" %>
 		<%= f.text_area :notes %>
-		<%= f.label "status" %>
+		<%= f.label "status", {:class => "form-dates"} %>
 		<%= f.select(:status, options_for_select([['incomplete'], ['pending'], ['complete']])) %>
 	
 	<div class="multi-input">
