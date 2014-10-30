@@ -14,6 +14,11 @@
  *= require_self
  */
 
+html {
+	position: relative;
+    min-height: 100%;
+}
+
 body {
 	font-family: Lucida Grande;
 }
@@ -23,7 +28,7 @@ body ul {
 }
 
 .wrapper {
-	margin: 2px;
+	margin: 2px 2px 75px 2px;
 }
 
 h1 {
@@ -38,7 +43,7 @@ nav {
 	margin: 5px;
 	right: 0;
 	top: 0;
-	max-width: 150px;
+	width: 135px;
 }
 nav > ul {
 	margin-left: -25px;
@@ -219,4 +224,20 @@ nav > ul > li > ul > li > a {}
 	background-color: rgb(123, 123, 123);
 	color: rgb(89, 12, 12);
 }
+
+/* Footer */
+/*footer {
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 75px;
+    width: 100%;
+	background-color: rgb(152, 119, 119);
+	border-top: 2px solid black;
+}*/
+
+
+
+
+
 
