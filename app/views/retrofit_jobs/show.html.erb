@@ -152,6 +152,8 @@
 
 			<ul>
 				<% @retrofit_job.tasks.each do |t| %>
+				<li>
+					<ul>
 					<li>
 						<%= t.title %>
 					</li>
@@ -167,6 +169,8 @@
 					<li>
 						<%= button_to "edit task", edit_retrofit_job_task_path(@retrofit_job, t.id), method: :get, :class => "edit-form" %>
 					</li>
+					</ul>
+				</li>
 				<% end %>
 			</ul>
 		<% end %>
