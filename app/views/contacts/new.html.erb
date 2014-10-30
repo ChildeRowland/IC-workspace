@@ -1,5 +1,5 @@
 <h3>
-	<%= "Add Contact for #{@retrofit_job.store_number}" %>
+	<%= "Add Contact for #{@retrofit_job.store_name_and_number}" %>
 </h3>
 
 <div class="all-forms">
@@ -22,6 +22,6 @@
 
 		</div>
 
-	<%= button_to "cancel", :back, method: :get, :class => "submit-button cancel" %>
+	<%= button_to "cancel", retrofit_job_path(params[:retrofit_job_id]), method: :get, :class => "submit-button cancel" %>
 
 </div>

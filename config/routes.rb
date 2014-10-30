@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post :remove
     end
     resources :contacts
+    resources :tasks
     resources :crews
   end
 

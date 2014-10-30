@@ -1,6 +1,6 @@
 class Inventory < ActiveRecord::Base
 
-	belongs_to :sites
+	belongs_to :retrofit_jobs
 	belongs_to :units
 
 end

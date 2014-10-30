@@ -1,0 +1,25 @@
+<h3>
+	<%= "Add a task to #{@retrofit_job.store_name_and_number}" %>
+</h3>
+
+<div class="all-forms">
+	<%= form_for([@retrofit_job, @task], method: :post) do |f| %>
+		<%= f.label "title" %>
+		<%= f.text_field :title %>
+		<%= f.label "description" %>
+		<%= f.text_field :description %>
+		<%= f.label "notes" %>
+		<%= f.text_area :notes %>
+		<%= f.label "status" %>
+		<%= f.select(:status, options_for_select([['incomplete'], ['pending'], ['complete']])) %>
+	
+	<div class="multi-input">
+		<%= f.submit "add task", :class => "submit-button submit" %>
+
+	<% end %>
+
+	</div>
+
+	<%= button_to "cancel", retrofit_job_path(params[:retrofit_job_id]), method: :get, :class => "submit-button cancel" %>
+
+</div>
