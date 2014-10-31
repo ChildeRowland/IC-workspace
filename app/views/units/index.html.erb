@@ -44,13 +44,10 @@
 		<tbody>
 			<tr>
 				<td>
-					<%= image_tag u.avatar.url(:thumb) %>
-				</td>
-				<td>
 					<%= u.unit_type %><br>
 				</td>
 				<td>
-					<%= u.order_id %><br>
+					<%= u.order_identifier %><br>
 				</td>
 				<td>
 					<%= u.vendor %><br>
@@ -59,10 +56,13 @@
 					<%= u.mfg %><br>
 				</td>
 				<td>
-					<%= u.product_id %><br>
+					<%= u.product_identifier %><br>
 				</td>
 				<td>
 					<%= u.nickname %><br>
+				</td>
+				<td>
+					<%= u.finish %>
 				</td>
 				<td>
 					<%= u.description %><br>

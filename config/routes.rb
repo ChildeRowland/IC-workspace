@@ -9,19 +9,12 @@ Rails.application.routes.draw do
     resources :contacts
     resources :tasks
     resources :crews
+    resources :inventories
   end
 
-  resources :assets do
-  end
+  resources :assets, :units
 
   resources :resources, only: [:index]
-
-  # resources :sites do
-  #   resources :inventories
-  # end
-
-  # resources :units
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,31 +1,36 @@
 <h3>
-	New page for Units
+	Add a new unit
 </h3>
 
-form_for @user, :url => users_path, :html => { :multipart => true } do |form|
-
-<div>
+<div class="all-forms">
 	<%= form_for @unit, :url => units_path, :html => { :multipart => true } do |f| %>
-		<%= f.label "Upload a Pic" %><br>
-		<%= f.file_field :avatar %><br>
-		<%= f.label "Unit Type" %><br>
-		<%= f.text_field :unit_type, placeholder: "placeholder" %><br>
-		<%= f.label "Order ID" %><br>
-		<%= f.text_field :order_id %> <br>
-		<%= f.label "Vendor" %><br>
-		<%= f.text_field :vendor %><br>
-		<%= f.label "Manufacturer" %><br>
-		<%= f.text_field :mfg %><br>
-		<%= f.label "Product ID" %><br>
-		<%= f.text_field :product_id %><br>
-		<%= f.label "Nickname" %><br>
-		<%= f.text_field :nickname %><br>
-		<%= f.label "Description" %><br>
-		<%= f.text_field :description %><br>
-		<%= f.label "IC Notes" %><br>
-		<%= f.text_field :notes %><br>
-		<%= f.label "Product Type" %><br>
-		<%= f.text_field :product_type %><br>
-		<%= f.submit "Add Unit" %>
-	<% end %>
+		<%= f.label "Unit Type" %>
+		<%= f.text_field :unit_type, placeholder: "placeholder" %>
+		<%= f.label "Order ID" %>
+		<%= f.text_field :order_identifier %>
+		<%= f.label "Vendor" %>
+		<%= f.text_field :vendor %>
+		<%= f.label "Manufacturer" %>
+		<%= f.text_field :mfg %>
+		<%= f.label "Product ID" %>
+		<%= f.text_field :product_identifier %>
+		<%= f.label "Nickname" %>
+		<%= f.text_field :nickname %>
+		<%= f.label "Finish" %>
+		<%= f.text_field :finish %>
+		<%= f.label "Description" %>
+		<%= f.text_field :description %>
+		<%= f.label "IC Notes" %>
+		<%= f.text_area :notes %>
+		<%= f.label "Product Type" %>
+		<%= f.text_field :product_type %>
 </div>
+	
+	<div class="multi-input">		
+		<%= f.submit "Add Unit", {:class => "submit-button submit"} %>
+	<% end %>
+	</div>
+
+	<%= button_to "cancel", units_path, method: :get, :class => "submit-button cancel" %>
+
+

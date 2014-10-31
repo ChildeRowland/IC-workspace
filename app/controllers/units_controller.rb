@@ -13,9 +13,9 @@ class UnitsController < ApplicationController
 		if @unit.save
 			flash[:notice] = "New Unit Added"
 			redirect_to units_path
-		# else
-		# 	flash[:notice] = "Not Added"
-		# 	redirect_to :back
+		else
+			flash.now[:notice] = "Not Added"
+			render :new
 		end
 	end
 
@@ -27,7 +27,7 @@ class UnitsController < ApplicationController
 
 	private
 	def unit_params
-		params.require(:unit).permit( :avatar, :unit_type, :order_id, :vendor, :mfg, :product_id, :nickname, :description, :notes, :product_type)
+		params.require(:unit).permit(:unit_type, :order_identifier, :vendor, :mfg, :product_identifier, :nickname, :finish, :description, :notes, :product_type)
 	end
 
 end

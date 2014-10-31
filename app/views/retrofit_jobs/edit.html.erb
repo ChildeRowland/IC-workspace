@@ -45,6 +45,10 @@
 					<%= a.text_field :zip %>
 				<% end %>
 
+	</div>
+
+</div>
+
 		<div class="multi-input">
 			<%= f.submit :update, :class => "submit-button submit" %>
 			<% end %>
@@ -55,6 +59,4 @@
 
 			<%= button_to "delete store", retrofit_job_path, action: :destroy, method: :delete, :class => "submit-button delete", data: {confirm: "You are about to delete #{@retrofit_job.store_number} and all of its data. Continue?",} %>
 
-	</div>
-
-</div>
+	
