@@ -136,19 +136,31 @@
 			Inventory
 		</h4>
 
-		<% if @retrofit_job.inventories.empty? %>
+		<% if Unit.last.nil? %>
 
-			<div class="drop-form">
-				<%= form_for([@retrofit_job, @new_inventory], :url => retrofit_job_inventories_path(params[:id]), method: :create) do |f| %>
-				<%= f.label "Select Name" %><br>
-				<%= f.select(:unit_id, Unit.all.collect {|u| [u.name_for_retrofit_job, u.id]}) %>
-				<%= f.submit "add to #{@retrofit_job.store_number}" %>
-				<% end %>
-				</div>
+			<p>
+				There aren't any units in the IC database.  You can <%= link_to "add some here.", new_unit_path %>
+			</p>
+
+		<% elsif @retrofit_job.inventories.empty? %>
+
+			<%= button_to "Add", new_retrofit_job_inventory_path(@retrofit_job), method: :get, :class => "add-button" %>
 
 			<p>
 				<%= "No units have been listed for #{@retrofit_job.store_name_and_number}" %>
 			</p>
+
+		<% else %>
+			<ul>
+				<% @retrofit_job.inventories.each do |u| %>
+					<li>
+						<%= "#{u.unit.nickname} #{u.quantity}" %>
+					</li>
+					<li>
+						<%= u.status %>
+					</li>
+				<% end %>
+			</ul>
 		<% end %>
 
 	</div>

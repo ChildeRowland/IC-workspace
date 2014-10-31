@@ -1,11 +1,15 @@
 <h3>
-	<%= "Add units to #{@site.number}'s Inventory" %>
+	<%= "Add units to #{@retrofit_job.store_name_and_number}'s Inventory" %>
 </h3>
 
 <div>
-	<%= form_for([@site, @inventory], method: :post) do |f| %>
-		<%= f.label "Units" %>
-		<%= f.select(:unit_id, @units.all.collect {|u| [u.nickname, u.id]}) %>
+	<%= form_for([@retrofit_job, @inventory], method: :post) do |f| %>
+		<%= f.label "Unit" %>
+		<%= f.select(:unit_id, @units.all.collect {|u| [u.name_for_retrofit_job, u.id]}) %>
+		<%= f.label "Quantity" %>
+		<%= f.text_field :quantity %>
+		<%= f.label "Status" %>
+		<%= f.select(:status, options_for_select(['speculitive', 'ordered', 'shipped', 'warehouse', 'on site', 'missing'])) %>
 		<%= f.submit "Add" %>
 	<% end %>
 </div>
