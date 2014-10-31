@@ -2,6 +2,8 @@
 	Index page for the Units
 </h3>
 
+<%= link_to "Add a Unit", new_unit_path %>
+
 <table>
 	<thead>
 		<tr>
@@ -41,16 +43,21 @@
 			<th>
 				Last Updated
 			</th>
+			<th>
+				Full Detail
+			</th>
 		</tr>
 	</thead>
 	<% @units.each do |u| %>
 		<tbody>
 			<tr>
 				<td class="unit-pic">
-					<a href="http://pluto1.genlyte.com/MKACatImages/lytespan/pics/LLAB1_front.jpg"><img src="http://pluto1.genlyte.com/MKACatImages/lytespan/pics/LLAB1_front.jpg"></a>
+					<%= content_tag :a, :href => "#{u.img}" do -%>
+						<%= tag :img, :src => "#{u.img}" %>
+					<% end -%>
 				</td>
 				<td>
-					<%= u.unit_type %><br>
+					<%= u.type_of %><br>
 				</td>
 				<td>
 					<%= u.order_identifier %><br>
@@ -81,6 +88,9 @@
 				</td>
 				<td>
 					<%= time_ago_in_words(u.updated_at) %><br>
+				</td>
+				<td>
+					<%= link_to "view", unit_path(u.id) %>
 				</td>
 			</tr>
 		</tbody>

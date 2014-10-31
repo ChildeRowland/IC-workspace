@@ -4,8 +4,12 @@
 
 <div class="all-forms">
 	<%= form_for @unit, :url => units_path, :html => { :multipart => true } do |f| %>
+		<%= f.label "Image URL" %>
+		<%= f.text_field :img, placeholder: "copy and paste the url of the image" %>
+		<%= f.label "web page" %>
+		<%= f.text_field :url %>
 		<%= f.label "Unit Type" %>
-		<%= f.text_field :unit_type, placeholder: "placeholder" %>
+		<%= f.text_field :type_of %>
 		<%= f.label "Order ID" %>
 		<%= f.text_field :order_identifier %>
 		<%= f.label "Vendor" %>

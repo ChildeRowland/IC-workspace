@@ -1,3 +1,40 @@
 <h3>
 	Edit page for Units
 </h3>
+
+<div class="all-forms">
+	<%= form_for @unit, method: :patch do |f| %>
+		<%= f.label "Image URL" %>
+		<%= f.text_field :img, placeholder: "copy and paste the url of the image" %>
+		<%= f.label "web page" %>
+		<%= f.text_field :url %>
+		<%= f.label "Unit Type" %>
+		<%= f.text_field :type_of %>
+		<%= f.label "Order ID" %>
+		<%= f.text_field :order_identifier %>
+		<%= f.label "Vendor" %>
+		<%= f.text_field :vendor %>
+		<%= f.label "Manufacturer" %>
+		<%= f.text_field :mfg %>
+		<%= f.label "Product ID" %>
+		<%= f.text_field :product_identifier %>
+		<%= f.label "Nickname" %>
+		<%= f.text_field :nickname %>
+		<%= f.label "Finish" %>
+		<%= f.text_field :finish %>
+		<%= f.label "Description" %>
+		<%= f.text_field :description %>
+		<%= f.label "IC Notes" %>
+		<%= f.text_area :notes %>
+		<%= f.label "Product Type" %>
+		<%= f.text_field :product_type %>
+</div>
+	
+	<div class="multi-input">		
+		<%= f.submit "update", {:class => "submit-button submit"} %>
+	<% end %>
+	</div>
+
+	<%= button_to "cancel", unit_path(params[:id]), method: :get, :class => "submit-button cancel" %>
+
+	<%= button_to "delete unit", unit_path, method: :delete, :class => "submit-button delete", data: {confirm: "You are about to delete #{@unit.nickname} from the unit database, continue?"} %>

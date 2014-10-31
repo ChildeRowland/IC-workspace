@@ -1,7 +1,8 @@
 class CreateUnits < ActiveRecord::Migration
   def change
     create_table :units do |t|
-      t.string :unit_type
+      t.string :img
+      t.string :type_of
     	t.string :order_identifier
     	t.string :vendor
     	t.string :mfg
@@ -11,6 +12,7 @@ class CreateUnits < ActiveRecord::Migration
     	t.string :description
     	t.text :notes
     	t.integer :product_type
+      t.string :url
       t.timestamps
     end
   end

@@ -93,7 +93,8 @@ ActiveRecord::Schema.define(version: 20141030151448) do
   end
 
   create_table "units", force: true do |t|
-    t.string   "unit_type"
+    t.string   "img"
+    t.string   "type_of"
     t.string   "order_identifier"
     t.string   "vendor"
     t.string   "mfg"
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 20141030151448) do
     t.string   "description"
     t.text     "notes"
     t.integer  "product_type"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
