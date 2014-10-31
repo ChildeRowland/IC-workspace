@@ -11,15 +11,6 @@
 				Image
 			</th>
 			<th>
-				Unit Type
-			</th>
-			<th>
-				Order ID
-			</th>
-			<th>
-				Vendor
-			</th>
-			<th>
 				Manufacturer
 			</th>
 			<th>
@@ -30,9 +21,6 @@
 			</th>
 			<th>
 				Finish
-			</th>
-			<th>
-				Description
 			</th>
 			<th>
 				Notes
@@ -52,33 +40,21 @@
 		<tbody>
 			<tr>
 				<td class="unit-pic">
-					<%= content_tag :a, :href => "#{u.img}" do -%>
+					<%= content_tag :a, :href => "#{u.img}", :target => "blank" do -%>
 						<%= tag :img, :src => "#{u.img}" %>
 					<% end -%>
-				</td>
-				<td>
-					<%= u.type_of %><br>
-				</td>
-				<td>
-					<%= u.order_identifier %><br>
-				</td>
-				<td>
-					<%= u.vendor %><br>
 				</td>
 				<td>
 					<%= u.mfg %><br>
 				</td>
 				<td>
-					<%= u.product_identifier %><br>
+					<%= u.product_identifier %>
 				</td>
 				<td>
 					<%= u.nickname %><br>
 				</td>
 				<td>
 					<%= u.finish %>
-				</td>
-				<td>
-					<%= u.description %><br>
 				</td>
 				<td>
 					<%= u.notes %><br>

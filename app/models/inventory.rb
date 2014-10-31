@@ -1,6 +1,8 @@
 class Inventory < ActiveRecord::Base
 
-	belongs_to :retrofit_jobs
-	belongs_to :units
+	STATUS = ['speculitive', 'ordered', 'shipped', 'warehouse', 'on site', 'missing']
+
+	belongs_to :retrofit_job
+	belongs_to :unit
 
 end

@@ -4,7 +4,9 @@ class Unit < ActiveRecord::Base
  #  	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
  #  	#validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
 
- 	STATUS = ['speculitive', 'ordered', 'shipped', 'warehouse', 'on site', 'missing']
+ 	def name_for_retrofit_job
+ 		"#{mfg} #{nickname} #{finish}"
+ 	end
 
   	has_many :inventories
   	has_many :retrofit_jobs, through: :inventories

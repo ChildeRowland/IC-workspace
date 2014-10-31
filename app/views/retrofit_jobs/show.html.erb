@@ -130,6 +130,29 @@
 
 
 <div class="to-the-right">
+
+	<div class="store-box with-button">
+		<h4>
+			Inventory
+		</h4>
+
+		<% if @retrofit_job.inventories.empty? %>
+
+			<div class="drop-form">
+				<%= form_for([@retrofit_job, @new_inventory], :url => retrofit_job_inventories_path(params[:id]), method: :create) do |f| %>
+				<%= f.label "Select Name" %><br>
+				<%= f.select(:unit_id, Unit.all.collect {|u| [u.name_for_retrofit_job, u.id]}) %>
+				<%= f.submit "add to #{@retrofit_job.store_number}" %>
+				<% end %>
+				</div>
+
+			<p>
+				<%= "No units have been listed for #{@retrofit_job.store_name_and_number}" %>
+			</p>
+		<% end %>
+
+	</div>
+
 	<div class="store-box with-button to-do-list">
 		<h4>
 			To Do List

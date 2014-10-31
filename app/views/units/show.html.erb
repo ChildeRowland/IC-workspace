@@ -2,19 +2,50 @@
 	Show page for Units
 </h3>
 
-<div>
+<div class="unit-detail">
+
+	<p>
+		<%= content_tag :a, :href => "#{@unit.img}", :target => 'blank' do -%>
+			<%= tag :img, :src => "#{@unit.img}" %>
+		<% end -%>
+	</p>
+	<p>
+		<%= @unit.url %>
+	</p>
+	<p>
+		<%= @unit.type_of %>
+	</p>
+	<p>
+		<%= @unit.order_identifier %>
+	</p>
+	<p>
+		<%= @unit.vendor %>
+	</p>
+	<p>
+		<%= @unit.mfg %>
+	</p>
+	<p>
+		<%= @unit.product_identifier %>
+	</p>
+	<p>
+		<%= @unit.nickname %>
+	</p>
+	<p>
+		<%= @unit.finish %>
+	</p>
+	<p>
+		<%= @unit.description %>
+	</p>
+	<p>
+		<%= @unit.notes %>
+	</p>
+	<p>
+		<%= @unit.product_type %>
+	</p>
+
+
+	<%= button_to "edit", edit_unit_path(@unit.id), method: :get, :class => "edit-form" %>
 	
 </div>
 
-@unit.img 
-@unit.url 
-@unit.type_of 
-@unit.order_identifier 
-@unit.vendor 
-@unit.mfg 
-@unit.product_identifier 
-@unit.nickname 
-@unit.finish 
-@unit.description 
-@unit.notes 
-@unit.product_type
+

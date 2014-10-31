@@ -45,7 +45,12 @@ class RetrofitJobsController < ApplicationController
 		@retrofit_job = RetrofitJob.find(params[:id])
 		@new_crew = @retrofit_job.crews.build(params[:crew])
 		@crew = @retrofit_job.crews(params[:id])
+		
 		@assets = @retrofit_job.assets.all
+		@units = @retrofit_job.units.all
+
+		@new_inventory = @retrofit_job.inventories.build(params[:inventory])
+		@inventory = @retrofit_job.inventories(params[:id])
 
 	end
 
