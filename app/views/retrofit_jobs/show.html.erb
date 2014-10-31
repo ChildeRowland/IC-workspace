@@ -2,23 +2,19 @@
 <div class="to-the-left">
 	<div class="store-box">
 
-		<h3>
+		<h4>
 			<%= "#{@retrofit_job.store_name_and_number} Project Page" %>
-		</h3>
-
-
+		</h4>
 		<p>
-			phone number: 
+			Phone: 
 			<br>
 			<%= @retrofit_job.phone %>
 		</p>
-
 		<p>
-			Store Hours:
+			Hours:
 			<br>
 			<%= simple_format(@retrofit_job.hours) %>
 		</p>
-
 		<p>
 			Location:
 			<br>
@@ -38,13 +34,11 @@
 				<%= link_to 'View Google Map', "http://maps.google.com?q=#{@retrofit_job.google_maps_format}", :target => "blank" %>
 			<% end %>
 		</p>
-
 		<% if !@retrofit_job.url.empty? %>
 			<p>
 				<%= link_to "#{@retrofit_job.store_number} Web Page", "#{@retrofit_job.url}", target: 'blank' %>
 			</p>
 		<% end %>
-
 		<p>
 			Site Visit:
 			<br>
@@ -63,7 +57,7 @@
 		<% if @retrofit_job.contacts.empty? %>
 
 			<p>
-				No Contacts yet.
+				<%= "Use this field to list out important contacts at #{@retrofit_job.store_name_and_number}" %>
 			</p>
 
 		<% else %>
@@ -106,7 +100,7 @@
 				</div>
 
 				<p>
-					No Assets assigned to this job yet.  Use the drop down list to add.
+					<%= "No Assets are assigned to #{@retrofit_job.store_name_and_number}.  Use the drop down list select from the available labor." %>
 				</p>
 
 			<% else %>
@@ -145,13 +139,13 @@
 
 		<% if @retrofit_job.tasks.empty? %>
 			<p>
-				No Tasks yet.
+				<%= "No Tasks have been listed for #{@retrofit_job.store_name_and_number}" %>
 			</p>
 
 		<% else %>
 
 			<ul>
-				<% @retrofit_job.tasks.each do |t| %>
+				<% @retrofit_job.tasks.order("status desc").each do |t| %>
 				<li>
 					<ul>
 					<li>
