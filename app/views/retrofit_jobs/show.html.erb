@@ -131,7 +131,7 @@
 
 <div class="to-the-right">
 
-	<div class="store-box with-button">
+	<div class="store-box with-button inventories-list">
 		<h4>
 			Inventory
 		</h4>
@@ -151,13 +151,26 @@
 			</p>
 
 		<% else %>
+
+			<%= button_to "Add", new_retrofit_job_inventory_path(@retrofit_job), method: :get, :class => "add-button" %>
+
 			<ul>
 				<% @retrofit_job.inventories.each do |u| %>
 					<li>
-						<%= "#{u.unit.nickname} #{u.quantity}" %>
-					</li>
-					<li>
-						<%= u.status %>
+						<ul>
+							<%= content_tag :li, class: "#{u.status}" do -%>
+								<%= u.status %>
+							<% end -%>
+							<li>
+								<%= "#{u.quantity} count" %>
+							</li>
+							<li>
+								<%= "#{u.unit.name_for_retrofit_job}" %>
+							</li>
+							<li>
+								<%= button_to "edit", edit_retrofit_job_inventory_path(@retrofit_job, u.id), method: :get, :class => "edit-form" %>
+							</li>
+						</ul>
 					</li>
 				<% end %>
 			</ul>

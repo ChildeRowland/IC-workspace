@@ -1,15 +1,20 @@
 <h3>
-	<%= "Add units to #{@retrofit_job.store_name_and_number}'s Inventory" %>
+	<%= "Add unit to #{@retrofit_job.store_name_and_number}'s Inventory" %>
 </h3>
 
-<div>
+<div class="all-forms">
 	<%= form_for([@retrofit_job, @inventory], method: :post) do |f| %>
-		<%= f.label "Unit" %>
-		<%= f.select(:unit_id, @units.all.collect {|u| [u.name_for_retrofit_job, u.id]}) %>
+		<%= f.label "Unit", {:class => "form-dates"} %>
+		<%= f.select(:unit_id, @units.all.collect {|u| [u.name_for_retrofit_job, u.id]}) %><br>
 		<%= f.label "Quantity" %>
 		<%= f.text_field :quantity %>
-		<%= f.label "Status" %>
-		<%= f.select(:status, options_for_select(['speculitive', 'ordered', 'shipped', 'warehouse', 'on site', 'missing'])) %>
-		<%= f.submit "Add" %>
+		<%= f.label "Status", {:class => "form-dates"} %>
+		<%= f.select(:status, options_for_select(['speculitive', 'ordered', 'shipped', 'warehouse', 'on site', 'missing'])) %><br>
+		
+	<div class="multi-input">
+		<%= f.submit "Add", {:class => "submit-button submit"} %>
+	</div>
 	<% end %>
 </div>
+		
+		<%= button_to "cancel", retrofit_job_path(@retrofit_job), method: :get, :class => "submit-button cancel" %>
