@@ -11,9 +11,11 @@
 		<%= f.label "Status", {:class => "form-dates"} %>
 		<%= f.select(:status, options_for_select(['speculitive', 'ordered', 'shipped', 'warehouse', 'on-site', 'missing'])) %><br>
 		
-	<div class="multi-input">
-		<%= f.submit "Add", {:class => "submit-button submit"} %>
-	</div>
+		<div class="multi-input">
+
+			<%= f.submit "Add", {:class => "submit-button submit"} %> 
+			
+		</div>
 	<% end %>
 </div>
 		

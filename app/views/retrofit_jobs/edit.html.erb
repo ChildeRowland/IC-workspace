@@ -13,7 +13,6 @@
 </h3>
 
 <div class="all-forms">
-	<div>
 		<%= form_for(@retrofit_job, method: :patch) do |f| %>
 			<%= f.label "store number" %>
 			<%= f.text_field :store_number %>
@@ -45,15 +44,13 @@
 					<%= a.text_field :zip %>
 				<% end %>
 
-	</div>
+			<div class="multi-input">
 
+				<%= f.submit :update, :class => "submit-button submit" %>
+				
+			</div>
+		<% end %>
 </div>
-
-		<div class="multi-input">
-			<%= f.submit :update, :class => "submit-button submit" %>
-			<% end %>
-	
-		</div>
 
 			<%= button_to "cancel", retrofit_job_path, method: :get, :class => "submit-button cancel" %>
 

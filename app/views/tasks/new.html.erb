@@ -13,13 +13,13 @@
 		<%= f.label "status", {:class => "form-dates"} %>
 		<%= f.select(:status, options_for_select([['incomplete'], ['pending'], ['complete']])) %>
 	
-	<div class="multi-input">
-		<%= f.submit "add task", :class => "submit-button submit" %>
+		<div class="multi-input">
 
+			<%= f.submit "add task", :class => "submit-button submit" %>
+			
+		</div>
 	<% end %>
-
-	</div>
+</div>
 
 	<%= button_to "cancel", retrofit_job_path(params[:retrofit_job_id]), method: :get, :class => "submit-button cancel" %>
 
-</div>

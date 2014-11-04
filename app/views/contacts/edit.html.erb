@@ -18,15 +18,15 @@
 		<div class="multi-input">
 
 			<%= f.submit "update contact", :class => "submit-button submit" %>
-	
-	<% end %>
-
 		</div>
+	<% end %>
+</div>
+		
 
 	<%= button_to "cancel", retrofit_job_path(params[:retrofit_job_id]), method: :get, :class => "submit-button cancel" %>
 
 	<%= button_to 'remove contact', retrofit_job_contact_path, method: :delete, :class => "submit-button delete", data: {confirm: "You are about to remove #{@contact.fname} from store #{@retrofit_job.store_number}, continue?"} %>
 
-</div>
+
 
 

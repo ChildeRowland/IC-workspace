@@ -30,15 +30,15 @@
 			<%= a.text_field :zip %>
 		<% end %>
 
-	<%= f.label "Rate/Role" %>
-	<%= f.text_field :rate %>
+		<%= f.label "Rate/Role" %>
+		<%= f.text_field :rate %>
 
-	<div class="multi-input">
-		<%= f.submit :submit, {:class => "submit-button submit"} %>
+		<div class="multi-input">
+			
+			<%= f.submit :submit, {:class => "submit-button submit"} %>
+		</div>
 	<% end %>
-		
-	</div>
-	
+</div>
+
 	<%= button_to "cancel", assets_path, method: :get, :class => "submit-button cancel" %>
 
-</div>

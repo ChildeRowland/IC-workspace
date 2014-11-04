@@ -28,12 +28,14 @@
 		<%= f.text_area :notes %>
 		<%= f.label "Product Type" %>
 		<%= f.text_field :product_type %>
-</div>
 	
-	<div class="multi-input">		
-		<%= f.submit "update", {:class => "submit-button submit"} %>
+		<div class="multi-input">
+
+			<%= f.submit "update", {:class => "submit-button submit"} %>
+
+		</div>
 	<% end %>
-	</div>
+</div>
 
 	<%= button_to "cancel", unit_path(params[:id]), method: :get, :class => "submit-button cancel" %>
 

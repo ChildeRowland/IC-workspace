@@ -33,14 +33,14 @@
 			<%= a.text_field :zip %>
 		<% end %>
 
-	<div class="multi-input">
-		<%= f.submit :update, {:class => "submit-button submit"} %>
-	<% end %>
+		<div class="multi-input">
 			
-	</div>
+			<%= f.submit :update, {:class => "submit-button submit"} %>
+		</div>
+	<% end %>
+</div>
 
 	<%= button_to "cancel", asset_path, method: :get, :class => "submit-button cancel" %>
 
 	<%= button_to "delete asset", asset_path, method: :delete, :class => "submit-button delete", data: {confirm: "You are about to delete #{@asset.fname}, continue?",} %>
 
-</div>
