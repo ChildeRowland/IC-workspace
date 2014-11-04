@@ -5,7 +5,7 @@ class Unit < ActiveRecord::Base
  #  	#validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
 
  	def name_for_retrofit_job
- 		"#{mfg}-#{nickname}-#{finish}"
+ 		"#{mfg}, #{nickname} #{finish}"
  	end
 
   	has_many :inventories

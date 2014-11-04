@@ -81,6 +81,13 @@ nav > ul > li > ul > li > a {
 	background-color: rgb(255, 216, 173);
 }
 
+
+/* index list */
+.index-list {
+	margin: 10px 0 0 0;
+}
+
+
 /* Divs for retrofit store catogories. */
 
 .to-the-left {

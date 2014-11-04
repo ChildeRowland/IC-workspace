@@ -11,11 +11,13 @@
 <% else %>
 	<div>
 		<ul>
-			<% @retrofit_jobs.each do |r| %>
-			<li>
+			<% @retrofit_jobs.order("start asc").each do |r| %>
+			<li class="index-list">
 				<%= r.store_number %>
 				<%= r.mall_name %>
-				<%= link_to "Veiw Job", retrofit_job_path(:id => r.id) %> 
+				<%= link_to "Veiw Job", retrofit_job_path(:id => r.id) %><br>
+				Installing:
+				<%= r.start.strftime("%A %B, %d, %Y") %>
 			</li>
 			<% end %>
 		</ul>
