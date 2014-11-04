@@ -10,9 +10,39 @@ class InventoriesController < ApplicationController
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])		
 		@inventory = @retrofit_job.inventories.build(inventory_params)
 		if @inventory.save
-			flash.now[:notice] = "Unit Added "
+			flash[:notice] = "Unit Added "
+			redirect_to retrofit_job_path(params[:retrofit_job_id])
+		else
+			flash.now[:notice] = "Try Again"
+			render :new
+		end
+	end
+
+	def edit
+		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
+		@inventory = @retrofit_job.inventories.find(params[:id])
+	end
+
+	def update
+		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
+		@inventory = @retrofit_job.inventories.find(params[:id])
+		if @inventory.update_attributes(inventory_params)
+			flash[:notice] = "Inventory Updated"
+			redirect_to retrofit_job_path(params[:retrofit_job_id])
+		else
+			flash.now[:notice] = "Try Again"
+			render :edit
+		end
+	end
+
+	def destroy
+		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
+		@inventory = @retrofit_job.inventories.find(params[:id])
+		if @inventory.delete
+			flash[:notice] = "Unit removed from Inventory"
 			redirect_to retrofit_job_path(params[:retrofit_job_id])
 		end
+
 	end
 
 	private

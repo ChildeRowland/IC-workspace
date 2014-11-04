@@ -18,7 +18,7 @@ class RetrofitJobsController < ApplicationController
 			flash[:notice] = "Store Added"
 			redirect_to retrofit_job_path(@retrofit_job)
 		else
-			flash[:notice] = "Try Again"
+			flash.now[:notice] = "Try Again"
 			render :new
 		end
 	end
@@ -35,7 +35,7 @@ class RetrofitJobsController < ApplicationController
 			flash[:notice] = "Store Info Updated"
 			redirect_to retrofit_job_path(params[:id])
 		else
-			flash[:notice] = "Try Again"
+			flash.now[:notice] = "Try Again"
 			render :edit
 		end
 	end
@@ -61,8 +61,8 @@ class RetrofitJobsController < ApplicationController
 			flash[:notice] = "Job Deleted"
 			redirect_to retrofit_jobs_path
 		else
-			flash[:notice] = "Try Again"
-			redirect_to :back
+			flash.now[:notice] = "Try Again"
+			render :new
 		end
 	end
 

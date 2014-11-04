@@ -1,0 +1,22 @@
+<h3>
+	<%= "Edit the quantity or status of the #{@inventory.unit.nickname}'s at #{@retrofit_job.store_name_and_number}" %>
+</h3>
+
+<div class="all-forms">
+	<%= form_for([@retrofit_job, @inventory], method: :patch) do |f| %>
+		<%= f.label "Quantity" %>
+		<%= f.text_field :quantity %>
+		<%= f.label "Status", {:class => "form-dates"} %>
+		<%= f.select(:status, options_for_select(['speculitive', 'ordered', 'shipped', 'warehouse', 'on-site', 'missing'])) %>
+
+		<%= "Currently: #{@inventory.status}" %><br>
+		
+	<div class="multi-input">
+		<%= f.submit "Update", {:class => "submit-button submit"} %>
+	</div>
+	<% end %>
+</div>
+		
+		<%= button_to "cancel", retrofit_job_path(@retrofit_job), method: :get, :class => "submit-button cancel" %>
+
+		<%= button_to "remove unit", retrofit_job_inventory_path, method: :delete, :class => "submit-button delete" %>
