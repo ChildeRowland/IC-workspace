@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20141030151448) do
     t.integer  "unit_id"
     t.integer  "quantity"
     t.string   "status"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

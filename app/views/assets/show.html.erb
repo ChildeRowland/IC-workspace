@@ -12,20 +12,55 @@
 		<%= @asset.phone %><br>
 		<%= mail_to("#{@asset.email}", name = nil) %>
 	</p>
-	<p>
-		Date of birth:<br>
-		<%= @asset.dob.strftime("%B, %d %Y") %>
-	</p>
+	<% if !@asset.dob.nil? %>
+		<p>
+			Date of birth:<br>
+			<%= @asset.dob.strftime("%B, %d %Y") %>
+		</p>
+	<% end %>
 	<p>
 		Rate Type:<br>
 		<%= @asset.rate %>
 	</p>
 
-	<% @asset.crews.each do |c| %>
-		<%= c.id %>
-	<% end %>
-
 	<%= link_to 'edit asset', edit_asset_path(@asset) %>
 
+</div>
+
+<div>
+	<h3>
+		Upcoming Jobs
+	</h3>
+
+	<% if @asset.crews.last.nil? %>
+
+		<p>
+			Not currently Assigned to any Job
+		</p>
+
+	<% else %>
+	
+		<ul>
+			<% @asset.crews.each do |c| %>
+			<li>
+				<%= c.retrofit_job.store_name_and_number %><br>
+
+					<% if !c.retrofit_job.start.nil? %>
+						<%= c.retrofit_job.start.strftime("%A, %m.%l.%y") %><br>
+					<% end %>
+
+				<%= link_to "view job", retrofit_job_path(c.retrofit_job.id) %>
+			</li>
+			<% end %>
+		</ul>
+
+	<% end %>
+
+</div>
+
+<div>
+	<h3>
+		Upcoming Logistics
+	</h3>
 </div>
 

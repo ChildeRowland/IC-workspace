@@ -8,6 +8,8 @@
 		<%= f.select(:unit_id, @units.all.collect {|u| [u.name_for_retrofit_job, u.id]}) %><br>
 		<%= f.label "Quantity" %>
 		<%= f.text_field :quantity %>
+		<%= f.label "Notes" %>
+		<%= f.text_area :notes %>
 		<%= f.label "Status", {:class => "form-dates"} %>
 		<%= f.select(:status, options_for_select(['speculitive', 'ordered', 'shipped', 'warehouse', 'on-site', 'missing'])) %><br>
 		

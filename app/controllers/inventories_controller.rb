@@ -47,7 +47,7 @@ class InventoriesController < ApplicationController
 
 	private
 	def inventory_params
-		params.require(:inventory).permit(:retrofit_job_id, :unit_id, :quantity, :status)
+		params.require(:inventory).permit(:retrofit_job_id, :unit_id, :quantity, :status, :notes)
 	end
 
 end

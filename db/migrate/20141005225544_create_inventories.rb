@@ -5,6 +5,7 @@ class CreateInventories < ActiveRecord::Migration
     	t.integer :unit_id
     	t.integer :quantity
     	t.string :status
+    	t.text :notes
       t.timestamps
     end
   end

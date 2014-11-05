@@ -6,6 +6,11 @@
 			<%= "#{@retrofit_job.store_name_and_number} Project Page" %>
 		</h4>
 		<p>
+			Sales Area:
+			<br>
+			<%= @retrofit_job.sqft %>
+		</p>
+		<p>
 			Phone: 
 			<br>
 			<%= @retrofit_job.phone %>
@@ -165,7 +170,7 @@
 								<%= "#{u.unit.name_for_retrofit_job}" %>
 							</li>
 							<li>
-								<%=  %>
+								<%= simple_format(u.notes) %>
 							</li>
 							<%= content_tag :li, class: "#{u.status}" do -%>
 								<%= u.status %>
