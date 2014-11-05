@@ -215,6 +215,42 @@ nav > ul > li > ul > li > a {
 	color: red;
 }
 
+.logistics {
+	width: 90%;
+	clear: both;
+	background-color: white;
+}
+
+.logistics .crew-divisions {
+	margin: 0px 0px 20px 0px;
+	padding: 10px 10px 40px 10px;
+	background-color: rgb(224, 210, 222);
+	border-radius: 10px;
+	box-shadow: 5px 7px 2px #888888;
+}
+
+.logistics .crew-divisions p {
+	background-color: rgb(224, 210, 222);
+}
+
+.logistics ul ul ul{
+	margin: 10px 0px 10px 0px;
+	padding: 10px 10px 40px 10px;
+	background-color: rgb(250, 250, 250);
+	border-radius: 10px;
+}
+
+.logistics a {
+	border: 1px solid #96d1f8;
+	border-radius: 5px;
+	background-color: lightblue;
+	margin: 32px 10px 0px 0px;
+	color: white;
+	padding: 4px;
+	margin: 10px;
+	font-size: 13px;
+}
+
 
 /* Button Styling */
 

@@ -1,9 +1,9 @@
 <h3>
-	<%= "Add travel for #{@crew.asset.first_and_last_name} on the #{@retrofit_job.store_name_and_number} LED project" %>
+	<%= "Edit travel for #{@crew.asset.first_and_last_name} on the #{@retrofit_job.store_name_and_number} LED project" %>
 </h3>
 
 <div class="all-forms">
-	<%= form_for([@retrofit_job, @crew, @travel], method: :post) do |f| %>
+	<%= form_for([@retrofit_job, @crew, @travel], method: :patch) do |f| %>
 		<%= f.label "carrier name" %>
 		<%= f.text_field :carrier_name %>
 		<%= f.label "carrier number" %>
@@ -18,7 +18,7 @@
 		<%= f.time_field :depart_time %>
 		<%= f.label "traveling to" %>
 		<%= f.text_field :arrive_city %>
-		<%= f.label "time of arrival" %>
+		<%= f.label "time of departure" %>
 		<%= f.time_field :arrive_time %>
 		<%= f.label "work, home, layover" %>
 		<%= f.text_field :status %>
@@ -26,10 +26,11 @@
 		<%= f.text_area :notes %>
 
 		<div class= "multi-input">
-			<%= f.submit :submit, {:class => "submit-button submit"} %>
+			<%= f.submit "update", {:class => "submit-button submit"} %>
 		</div>
 	<% end %>
 </div>
 
 	<%= button_to "cancel", retrofit_job_path(@retrofit_job), method: :get, :class => "submit-button cancel" %>
 
+	<%= button_to "delete", retrofit_job_crew_travel_path, method: :delete, :class => "submit-button delete", data: {confirm: "You are about to delete this travel, continue?"} %>

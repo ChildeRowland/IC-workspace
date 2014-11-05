@@ -31,4 +31,8 @@ class RetrofitJob < ActiveRecord::Base
 		"#{store_number} #{mall_name}"
 	end
 
+	def time_format
+		strftime("%I:%M %p")
+	end
+
 end

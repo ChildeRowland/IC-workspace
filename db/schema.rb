@@ -95,12 +95,13 @@ ActiveRecord::Schema.define(version: 20141105144919) do
 
   create_table "travels", force: true do |t|
     t.integer  "crew_id"
-    t.string   "location_code"
     t.string   "carrier_name"
     t.string   "carrier_number"
     t.string   "confirmation_number"
     t.date     "day"
+    t.string   "depart_city"
     t.time     "depart_time"
+    t.string   "arrive_city"
     t.time     "arrive_time"
     t.string   "status"
     t.text     "notes"

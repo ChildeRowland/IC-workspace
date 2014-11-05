@@ -123,11 +123,9 @@
 						<li>
 						<%= c.asset.fname %>
 						<%= c.asset.lname %><br>
-						<%= c.travels.last.location_code %><br>
 						<%=  link_to 'view details', asset_path(c.asset.id) %>
 						</li>
 						<%= link_to 'remove from job', remove_retrofit_job_path(foo_params: c.asset.id), method: :post, action: :remove, data: {confirm: "Remove this Asset from the job?"} %>
-						<%= link_to 'add travel', new_retrofit_job_crew_travel_path(@retrofit_job, c.id) %>
 					<% end %>
 				</ul>
 				<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job, @crew), method: :get, :class => "edit-form" %>
@@ -228,6 +226,76 @@
 		<% end %>
 
 	</div>
+</div>
+
+<div class="store-box logistics">
+	<h4>
+		Logistics
+	</h4>
+
+	<% if @retrofit_job.crews.last.nil? %>
+
+		<p>
+			Once Crew is added to this job, travel information can be added.  
+		</p>
+
+	<% else %>
+
+	<ul class="crew-divisions">
+		<% @retrofit_job.crews.each do |c| %>
+			<li>
+				<%= c.asset.first_and_last_name %>
+				<%= link_to 'travel', new_retrofit_job_crew_travel_path(@retrofit_job, c.id) %>
+				<%= link_to 'hotel' %>
+				<%= link_to 'car' %>
+
+				<% if c.travels.last.nil? %>
+
+					<p>
+						No travel saved.
+					</p>
+
+				<% else %>
+
+					<ul>
+						<% c.travels.each do |t| %>
+							<li>
+								<ul>
+									<li>
+										Flight/Train
+									</li>
+									<li>
+										<%= "#{t.carrier_name} - #{t.carrier_number}" %>
+									</li>
+									<li>
+										<%= "Confirmation: #{t.confirmation_number}" %>
+									</li>
+									<li>
+										<%= t.day.strftime("%A %m.%e.%y") %>
+									</li>
+									<li>
+										<%= "#{t.depart_city} - #{t.depart_time.to_s(:clock)}" %>
+									</li>
+									<li>
+										<%= "#{t.arrive_city} - #{t.arrive_time.to_s(:clock)}" %>
+									</li>
+									<li>
+										<%= t.status %>
+									</li>
+										<%= simple_format(t.notes) %>
+									</li>
+									<li>
+										<%= button_to 'edit', edit_retrofit_job_crew_travel_path(@retrofit_job, c.id, t.id), method: :get, :class => "edit-form" %>
+									</li>
+								</li>
+							</ul>
+						<% end %>
+					</ul>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+	<% end %>
 </div>
 
 
