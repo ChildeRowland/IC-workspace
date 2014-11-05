@@ -40,7 +40,7 @@ class TravelsController < ApplicationController
 
 	def destroy
 		@travel = Travel.find(params[:id])
-		if @travel.delete
+		if @travel.destroy
 			flash[:notice] = "Travel Deleted"
 			redirect_to retrofit_job_path(params[:retrofit_job_id])
 		end

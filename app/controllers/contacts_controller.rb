@@ -39,7 +39,7 @@ class ContactsController < ApplicationController
 	end
 
 	def destroy
-		if Contact.find(params[:id]).delete
+		if Contact.find(params[:id]).destroy
 			flash[:notice] = "Contact Removed"
 			redirect_to retrofit_job_path(params[:retrofit_job_id])
 		end

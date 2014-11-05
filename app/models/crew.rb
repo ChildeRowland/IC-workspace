@@ -5,6 +5,6 @@ class Crew < ActiveRecord::Base
 	belongs_to :retrofit_job
 	belongs_to :asset
 
-	has_many :travels
+	has_many :travels, :dependent => :destroy
 
 end

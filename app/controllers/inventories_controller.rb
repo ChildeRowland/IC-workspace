@@ -38,7 +38,7 @@ class InventoriesController < ApplicationController
 	def destroy
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
 		@inventory = @retrofit_job.inventories.find(params[:id])
-		if @inventory.delete
+		if @inventory.destroy
 			flash[:notice] = "Unit removed from Inventory"
 			redirect_to retrofit_job_path(params[:retrofit_job_id])
 		end

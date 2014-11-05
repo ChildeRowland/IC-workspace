@@ -35,7 +35,7 @@ class TasksController < ApplicationController
 	end
 
 	def destroy
-		if Task.find(params[:id]).delete
+		if Task.find(params[:id]).destroy
 			flash.now[:notice] = "Task Deleted"
 			redirect_to retrofit_job_path(params[:retrofit_job_id])
 		end

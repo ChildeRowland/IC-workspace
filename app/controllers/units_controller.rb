@@ -39,7 +39,7 @@ class UnitsController < ApplicationController
 	end
 
 	def destroy
-		if Unit.find(params[:id]).delete
+		if Unit.find(params[:id]).destroy
 			flash.now[:notice] = "Unit Deleted"
 			redirect_to units_path
 		end

@@ -48,7 +48,7 @@ class AssetsController < ApplicationController
 
 	def destroy
 		@asset = Asset.find(params[:id])
-		if @asset.delete
+		if @asset.destroy
 			flash[:notice] = "Asset Deleted"
 			redirect_to assets_path
 		else

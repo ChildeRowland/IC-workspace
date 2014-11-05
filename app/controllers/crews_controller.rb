@@ -20,13 +20,10 @@ class CrewsController < ApplicationController
 
 	def destroy
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
-		@crew = @retrofit_job.crews(params[:id])
-		if @crew.delete
+		@crew = Crew.find(params[:id])
+		if @crew.destroy
 			flash[:notice] = "Asset Removed from Crew"
 			redirect_to retrofit_job_path(@retrofit_job)
-		else
-			flash[:notice] = "Try Again"
-			redirect_to :back
 		end
 
 	end

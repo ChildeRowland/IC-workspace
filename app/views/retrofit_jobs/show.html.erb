@@ -47,7 +47,7 @@
 		<p>
 			Site Visit:
 			<br>
-			<%= "#{@retrofit_job.start.strftime("%B, %d %Y")} through #{@retrofit_job.finish.strftime("%B, %d %Y")}" %>
+			<%= "#{@retrofit_job.start.to_s(:install_date)} through #{@retrofit_job.finish.to_s(:install_date)}" %>
 		</p>
 		<%= button_to "Edit Store", edit_retrofit_job_path(@retrofit_job), method: :get, :class => "edit-form" %>
 	</div>
@@ -125,7 +125,10 @@
 						<%= c.asset.lname %><br>
 						<%=  link_to 'view details', asset_path(c.asset.id) %>
 						</li>
+						<li>
 						<%= link_to 'remove from job', remove_retrofit_job_path(foo_params: c.asset.id), method: :post, action: :remove, data: {confirm: "Remove this Asset from the job?"} %>
+						<%= link_to 'delete from job', retrofit_job_crew_path(@retrofit_job, c.id), method: :delete, data: {confirm: "Remove this Asset and all assoiciated Logistics?"} %>
+						</li>
 					<% end %>
 				</ul>
 				<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job, @crew), method: :get, :class => "edit-form" %>
@@ -261,8 +264,8 @@
 						<% c.travels.each do |t| %>
 							<li>
 								<ul>
-									<li>
-										Flight/Train
+									<li class="logistics-header">
+											Flight/Train
 									</li>
 									<li>
 										<%= "#{t.carrier_name} - #{t.carrier_number}" %>
@@ -271,7 +274,7 @@
 										<%= "Confirmation: #{t.confirmation_number}" %>
 									</li>
 									<li>
-										<%= t.day.strftime("%A %m.%e.%y") %>
+										<%= t.day.to_s(:logistics_date) %>
 									</li>
 									<li>
 										<%= "#{t.depart_city} - #{t.depart_time.to_s(:clock)}" %>
