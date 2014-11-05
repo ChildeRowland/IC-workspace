@@ -1,0 +1,33 @@
+<h3>
+	Add Travel Plans
+</h3>
+
+<div class="all-forms">
+	<%= form_for([@retrofit_job, @crew, @travel], method: :post) do |f| %>
+		<%= f.label "airport/station" %>
+		<%= f.text_field :location_code %>
+		<%= f.label "carrier name" %>
+		<%= f.text_field :carrier_name %>
+		<%= f.label "carrier number" %>
+		<%= f.text_field :carrier_number %>
+		<%= f.label "confirmation" %>
+		<%= f.text_field :confirmation_number %>
+		<%= f.label "day of departure" %>
+		<%= f.date_field :day %>
+		<%= f.label "time of departure" %>
+		<%= f.time_field :depart_time %>
+		<%= f.label "time of arrival" %>
+		<%= f.time_field :arrive_time %>
+		<%= f.label "work, home, layover" %>
+		<%= f.text_field :status %>
+		<%= f.label "notes" %>
+		<%= f.text_area :notes %>
+
+		<div class= "multi-input">
+			<%= f.submit :submit, {:class => "submit-button submit"} %>
+		</div>
+	<% end %>
+</div>
+
+	<%= button_to "cancel", retrofit_job_path(@retrofit_job), method: :get, :class => "submit-button cancel" %>
+

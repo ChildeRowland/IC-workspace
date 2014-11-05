@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     end
     resources :contacts
     resources :tasks
-    resources :crews
+    resources :crews do
+      resources :travels
+    end
     resources :inventories
   end
 

@@ -123,9 +123,11 @@
 						<li>
 						<%= c.asset.fname %>
 						<%= c.asset.lname %><br>
+						<%= c.travels.last.location_code %><br>
 						<%=  link_to 'view details', asset_path(c.asset.id) %>
 						</li>
 						<%= link_to 'remove from job', remove_retrofit_job_path(foo_params: c.asset.id), method: :post, action: :remove, data: {confirm: "Remove this Asset from the job?"} %>
+						<%= link_to 'add travel', new_retrofit_job_crew_travel_path(@retrofit_job, c.id) %>
 					<% end %>
 				</ul>
 				<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job, @crew), method: :get, :class => "edit-form" %>
