@@ -53,6 +53,13 @@
 	</div>
 
 	<div class="store-box with-button">
+
+		<% if !@retrofit_job.contacts.last.nil? %>
+
+		<%= mail_to("#{@retrofit_job.contacts.map {|c| c.email }.join(',')}", name = "email all", html_options = {subject: "#{@retrofit_job.store_name_and_number} LED Retrofit"} ) %>
+
+		<% end %>
+
 		<h4>
 			Store Contacts
 		</h4>
@@ -126,8 +133,7 @@
 						<%=  link_to 'view details', asset_path(c.asset.id) %>
 						</li>
 						<li>
-						<%= link_to 'remove from job', remove_retrofit_job_path(foo_params: c.asset.id), method: :post, action: :remove, data: {confirm: "Remove this Asset from the job?"} %>
-						<%= link_to 'delete from job', retrofit_job_crew_path(@retrofit_job, c.id), method: :delete, data: {confirm: "Remove this Asset and all assoiciated Logistics?"} %>
+						<%= link_to 'remove from job', retrofit_job_crew_path(@retrofit_job, c.id), method: :delete, data: {confirm: "Remove this Asset and all assoiciated Logistics?"} %>
 						</li>
 					<% end %>
 				</ul>
