@@ -54,12 +54,6 @@
 
 	<div class="store-box with-button">
 
-		<% if !@retrofit_job.contacts.last.nil? %>
-
-		<%= mail_to("#{@retrofit_job.contacts.map {|c| c.email }.join(',')}", name = "email all", html_options = {subject: "#{@retrofit_job.store_name_and_number} LED Retrofit"} ) %>
-
-		<% end %>
-
 		<h4>
 			Store Contacts
 		</h4>
@@ -87,6 +81,9 @@
 				</li>
 				<% end %>
 			</ul>
+
+			<%= mail_to("#{@retrofit_job.contacts.map {|c| c.email }.compact.join(',')}", name = "email all job contacts", html_options = {bcc: "chris@invisiblecircus.net", subject: "#{@retrofit_job.store_name_and_number} LED Retrofit"}) %>
+
 		<% end %>
 	</div>
 
