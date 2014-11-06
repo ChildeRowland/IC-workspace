@@ -277,13 +277,25 @@
 										<%= "Confirmation: #{t.confirmation_number}" %>
 									</li>
 									<li>
+										<% begin %>
 										<%= t.day.to_s(:logistics_date) %>
+										<% rescue StandardError %>
+										Travel day formatting error. Edit this field.
+										<% end %>
 									</li>
 									<li>
+										<% begin %>
 										<%= "#{t.depart_city} - #{t.depart_time.to_s(:clock)}" %>
+										<% rescue StandardError %>
+										Departing time formatting error.  Edit this field.
+										<% end %>
 									</li>
 									<li>
+										<% begin %>
 										<%= "#{t.arrive_city} - #{t.arrive_time.to_s(:clock)}" %>
+										<% rescue StandardError %>
+										Arriving time formatting error.  Edit this field.
+										<% end %>
 									</li>
 									<li>
 										<%= t.status %>

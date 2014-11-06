@@ -12,11 +12,15 @@
 	Edit Store Infomation
 </h3>
 
+<p>
+	Items in red must be completed.
+</p>
+
 <div class="all-forms">
 		<%= form_for(@retrofit_job, method: :patch) do |f| %>
-			<%= f.label "store number" %>
+			<%= f.label "store number", {:class => "no-blank"} %>
 			<%= f.text_field :store_number %>
-			<%= f.label "mall name" %>
+			<%= f.label "mall name", {:class => "no-blank"} %>
 			<%= f.text_field :mall_name %>
 			<%= f.label "store area" %>
 			<%= f.text_field :sqft %>
@@ -26,9 +30,9 @@
 			<%= f.text_field :url %>
 			<%= f.label "store hours" %>
 			<%= f.text_area :hours %>
-			<%= f.label "start date", {:class => "form-dates"} %>
+			<%= f.label "start date", {:class => "form-dates no-blank"} %>
 			<%= f.date_select :start, :order => [:month, :day, :year] %><br>
-			<%= f.label "finish date", {:class => "form-dates"} %>
+			<%= f.label "finish date", {:class => "form-dates no-blank"} %>
 			<%= f.date_select :finish, :order => [:month, :day, :year] %><br>
 
 				<%= f.fields_for :address do |a| %>
@@ -39,9 +43,9 @@
 					<%= a.label "city" %>
 					<%= a.text_field :city %>
 					<%= a.label "state" %>
-					<%= a.text_field :state %>
+					<%= a.text_field :state, placeholder: "two letter state code" %>
 					<%= a.label "zip code" %>
-					<%= a.text_field :zip %>
+					<%= a.text_field :zip, placeholder: "five digit code" %>
 				<% end %>
 
 			<div class="multi-input">
