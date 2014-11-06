@@ -13,10 +13,16 @@
 		<%= mail_to("#{@asset.email}", name = nil) %>
 	</p>
 	<% if !@asset.dob.nil? %>
-		<p>
-			Date of birth:<br>
-			<%= @asset.dob.strftime("%B, %d %Y") %>
-		</p>
+		<% begin %>
+			<p>
+				Date of birth:<br>
+				<%= @asset.dob.strftime("%B, %d %Y") %>
+			</p>
+		<% rescue StandardError %>
+			<p>
+				DOB formatting error.  Edit this field.
+			</p> 
+		<% end %>
 	<% end %>
 	<p>
 		Rate Type:<br>
@@ -46,7 +52,11 @@
 				<%= c.retrofit_job.store_name_and_number %><br>
 
 					<% if !c.retrofit_job.start.nil? %>
-						<%= c.retrofit_job.start.strftime("%A, %m.%l.%y") %><br>
+						<% begin %>
+							<%= c.retrofit_job.start.strftime("%A, %m.%l.%y") %><br>
+						<% rescue StandardError %>
+							Start date formatting error.  Edit this field.
+						<% end %>
 					<% end %>
 
 				<%= link_to "view job", retrofit_job_path(c.retrofit_job.id) %>

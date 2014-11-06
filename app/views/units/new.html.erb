@@ -1,6 +1,20 @@
+<% if @unit.errors.any? %>
+	<div class="validation-messages">
+		<ul>
+			<% @unit.errors.each do | field, msg| %>
+				<li><%= msg %></li><br>
+   			<% end %>
+   		</ul>
+   	</div>
+<% end %>
+
 <h3>
 	Add a new unit
 </h3>
+
+<p>
+	Items in red must be completed.
+</p>
 
 <div class="all-forms">
 	<%= form_for @unit, :url => units_path, :html => { :multipart => true } do |f| %>
@@ -18,7 +32,7 @@
 		<%= f.text_field :mfg %>
 		<%= f.label "Product ID" %>
 		<%= f.text_field :product_identifier %>
-		<%= f.label "Nickname" %>
+		<%= f.label "Nickname", {:class => "no-blank"} %>
 		<%= f.text_field :nickname %>
 		<%= f.label "Finish" %>
 		<%= f.text_field :finish %>

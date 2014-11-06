@@ -1,10 +1,24 @@
+<% if @task.errors.any? %>
+	<div class="validation-messages">
+		<ul>
+			<% @task.errors.each do | field, msg| %>
+				<li><%= msg %></li><br>
+   			<% end %>
+   		</ul>
+   	</div>
+<% end %>
+
 <h3>
 	<%= "Edit a #{@task.title} to #{@retrofit_job.store_name_and_number}" %>
 </h3>
 
+<p>
+	Items in red must be completed.
+</p>
+
 <div class="all-forms">
 	<%= form_for([@retrofit_job, @task], method: :patch) do |f| %>
-		<%= f.label "title" %>
+		<%= f.label "title", {:class => "no-blank"} %>
 		<%= f.text_field :title %>
 		<%= f.label "description" %>
 		<%= f.text_field :description %>

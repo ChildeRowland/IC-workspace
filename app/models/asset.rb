@@ -1,5 +1,10 @@
 class Asset < ActiveRecord::Base
 
+	validates :fname,
+		:presence => 
+		{:message => "Asset must have a first name."}
+
+
 	has_many :crews, :dependent => :destroy
 	has_many :retrofit_jobs, through: :crews
 

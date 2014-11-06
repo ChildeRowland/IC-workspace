@@ -11,10 +11,10 @@ class UnitsController < ApplicationController
 	def create
 		@unit = Unit.create(unit_params)
 		if @unit.save
-			flash.now[:notice] = "New Unit Added"
+			flash[:notice] = "New Unit Added"
 			redirect_to unit_path(@unit)
 		else
-			flash.now[:notice] = "Not Added"
+			flash.now[:notice] = "Fix the following errors:"
 			render :new
 		end
 	end
@@ -30,10 +30,10 @@ class UnitsController < ApplicationController
 	def update
 		@unit = Unit.find(params[:id])
 			if @unit.update_attributes(unit_params)
-				flash.now[:notice] = "Unit Updated"
+				flash[:notice] = "Unit Updated"
 				redirect_to unit_path(params[:id])
 			else
-				flash.new[:notice] = "Try Again"
+				flash.now[:notice] = "Fix the following errors:"
 				render :edit
 			end
 	end

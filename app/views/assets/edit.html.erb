@@ -1,18 +1,32 @@
+<% if @asset.errors.any? %>
+	<div class="validation-messages">
+		<ul>
+			<% @asset.errors.each do | field, msg| %>
+				<li><%= msg %></li><br>
+   			<% end %>
+   		</ul>
+   	</div>
+<% end %>
+
 <h3>
 	<%= "Update #{@asset.fname}'s Information" %>
 </h3>
 
+<p>
+	Items in red must be completed.
+</p>
+
 <div class="all-forms">
 	
 	<%= form_for(@asset, method: :patch) do |f| %>
-		<%= f.label "first name" %>
+		<%= f.label "first name", {:class => "no-blank"} %>
 		<%= f.text_field :fname %>
 		<%= f.label "middle name" %>
 		<%= f.text_field :mname %>
 		<%= f.label "last name" %>
 		<%= f.text_field :lname %>
 		<%= f.label "DOB" %>
-		<%= f.date_field :dob %>
+		<%= f.date_field :dob, placeholder: "mm/dd/yyyy" %>
 		<%= f.label "phone number" %>
 		<%= f.text_field :phone %>
 		<%= f.label "email" %>
@@ -21,16 +35,16 @@
 		<%= f.text_field :rate %>
 
 		<%= f.fields_for :address do |a| %>
-			<%= a.label "line_one" %>
+			<%= a.label "line one" %>
 			<%= a.text_field :line_one %>
-			<%= a.label "line_two" %>
+			<%= a.label"line two" %>
 			<%= a.text_field :line_two %>
 			<%= a.label "city" %>
 			<%= a.text_field :city %>
 			<%= a.label "state" %>
-			<%= a.text_field :state %>
-			<%= a.label "zip" %>
-			<%= a.text_field :zip %>
+			<%= a.text_field :state, placeholder: "two letter state code" %>
+			<%= a.label "zip code" %>
+			<%= a.text_field :zip, placeholder: "five digit code" %>
 		<% end %>
 
 		<div class="multi-input">
@@ -42,5 +56,5 @@
 
 	<%= button_to "cancel", asset_path, method: :get, :class => "submit-button cancel" %>
 
-	<%= button_to "delete asset", asset_path, method: :delete, :class => "submit-button delete", data: {confirm: "You are about to delete #{@asset.fname}, continue?",} %>
+	<%= button_to "delete asset", asset_path, method: :delete, :class => "submit-button delete", data: {confirm: "You are about to delete #{@asset.fname}, remove from all crews and logistics. Continue?",} %>
 

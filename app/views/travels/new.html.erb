@@ -13,6 +13,10 @@
 	<%= "Add travel for #{@crew.asset.first_and_last_name} on the #{@retrofit_job.store_name_and_number} LED project" %>
 </h3>
 
+<p>
+	Items in red must be completed.
+</p>
+
 <div class="all-forms">
 	<%= form_for([@retrofit_job, @crew, @travel], method: :post) do |f| %>
 		<%= f.label "carrier name" %>

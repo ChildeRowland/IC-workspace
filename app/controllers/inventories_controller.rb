@@ -13,7 +13,7 @@ class InventoriesController < ApplicationController
 			flash[:notice] = "Unit Added "
 			redirect_to retrofit_job_path(params[:retrofit_job_id])
 		else
-			flash.now[:notice] = "Try Again"
+			flash.now[:notice] = "Fix the following errors:"
 			render :new
 		end
 	end
@@ -30,7 +30,7 @@ class InventoriesController < ApplicationController
 			flash[:notice] = "Inventory Updated"
 			redirect_to retrofit_job_path(params[:retrofit_job_id])
 		else
-			flash.now[:notice] = "Try Again"
+			flash.now[:notice] = "Fix the following errors:"
 			render :edit
 		end
 	end

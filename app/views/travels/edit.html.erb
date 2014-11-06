@@ -1,6 +1,20 @@
+<% if @travel.errors.any? %>
+	<div class="validation-messages">
+		<ul>
+			<% @travel.errors.each do | field, msg| %>
+				<li><%= msg %></li><br>
+   			<% end %>
+   		</ul>
+   	</div>
+<% end %>
+
 <h3>
 	<%= "Edit travel for #{@crew.asset.first_and_last_name} on the #{@retrofit_job.store_name_and_number} LED project" %>
 </h3>
+
+<p>
+	Items in red must be completed.
+</p>
 
 <div class="all-forms">
 	<%= form_for([@retrofit_job, @crew, @travel], method: :patch) do |f| %>
@@ -10,16 +24,16 @@
 		<%= f.text_field :carrier_number %>
 		<%= f.label "confirmation" %>
 		<%= f.text_field :confirmation_number %>
-		<%= f.label "day of departure" %>
-		<%= f.date_field :day %>
-		<%= f.label "depart from" %>
+		<%= f.label "day of departure", {:class => "no-blank"} %>
+		<%= f.date_field :day, placeholder: "mm/dd/yyyy" %>
+		<%= f.label "depart from", {:class => "no-blank"} %>
 		<%= f.text_field :depart_city %>
-		<%= f.label "time of departure" %>
-		<%= f.time_field :depart_time %>
-		<%= f.label "traveling to" %>
+		<%= f.label "time of departure", {:class => "no-blank"} %>
+		<%= f.time_field :depart_time, placeholder: "hh:mm ap" %>
+		<%= f.label "traveling to", {:class => "no-blank"} %>
 		<%= f.text_field :arrive_city %>
-		<%= f.label "time of departure" %>
-		<%= f.time_field :arrive_time %>
+		<%= f.label "time of arrival", {:class => "no-blank"} %>
+		<%= f.time_field :arrive_time, placeholder: "hh:mm ap" %>
 		<%= f.label "work, home, layover" %>
 		<%= f.text_field :status %>
 		<%= f.label "notes" %>

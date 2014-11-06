@@ -18,8 +18,8 @@ class AssetsController < ApplicationController
 			flash[:notice] = "Asset has been Created"
 			redirect_to assets_path
 		else
-			flash[:notice] = "Try Again"
-			redirect_to :back
+			flash.now[:notice] = "Fix the following errors:"
+			render :new
 		end
 	end
 
@@ -40,8 +40,8 @@ class AssetsController < ApplicationController
 			flash[:notice] = "Asset Updated"
 			redirect_to asset_path(params[:id])
 		else
-			flash[:notice] = "Try Again"
-			redirect_to :back
+			flash.now[:notice] = "Fix the following errors:"
+			render :edit
 		end
 	end
 

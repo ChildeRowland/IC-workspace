@@ -14,7 +14,7 @@ class TravelsController < ApplicationController
 			flash[:notice] = "Travel Plan Added"
 			redirect_to retrofit_job_path(@retrofit_job)
 		else
-			flash[:notice] = "Try Again"
+			flash.now[:notice] = "Fix the following errors:"
 			render :new
 		end
 	end
@@ -33,7 +33,7 @@ class TravelsController < ApplicationController
 			flash[:notice] = "Travel Plan Added"
 			redirect_to retrofit_job_path(@retrofit_job)
 		else
-			flash.now[:notice] = "Try Again"
+			flash.now[:notice] = "Fix the following errors:"
 			render :new
 		end
 	end

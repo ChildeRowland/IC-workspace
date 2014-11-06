@@ -13,10 +13,10 @@ class ContactsController < ApplicationController
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
 		@contact = @retrofit_job.contacts.build(contract_params)
 		if @contact.save
-			flash.now[:notice] = "Contact Added"
+			flash[:notice] = "Contact Added"
 			redirect_to retrofit_job_path(params[:retrofit_job_id])
 		else
-			flash.now[:notice] = "Try Again"
+			flash.now[:notice] = "Fix the following errors:"
 			render :new
 		end
 	end
@@ -30,10 +30,10 @@ class ContactsController < ApplicationController
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
 		@contact = @retrofit_job.contacts.find(params[:id])
 		if @contact.update_attributes(contract_params)
-			flash.now[:notice] = "Contact Updated"
+			flash[:notice] = "Contact Updated"
 			redirect_to retrofit_job_path(params[:retrofit_job_id])
 		else
-			flash.now[:notice] = "Try Again"
+			flash.now[:notice] = "Fix the following errors:"
 			render :edit
 		end
 	end

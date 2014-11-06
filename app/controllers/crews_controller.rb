@@ -13,7 +13,7 @@ class CrewsController < ApplicationController
 			flash[:notice] = "Crew Updated"
 			redirect_to retrofit_job_path(@retrofit_job)
 		else
-			flash[:notice] = "Try Again"
+			flash[:notice] = "Fix the following errors:"
 			redirect_to :back
 		end
 	end

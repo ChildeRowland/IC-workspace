@@ -9,10 +9,10 @@ class TasksController < ApplicationController
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
 		@task = @retrofit_job.tasks.build(task_params)
 		if @task.save
-			flash.now[:notice] = "Task Added"
+			flash[:notice] = "Task Added"
 			redirect_to retrofit_job_path(params[:retrofit_job_id])
 		else
-			flash.now[:notice] = "Try Again"
+			flash.now[:notice] = "Fix the following errors:"
 			render :new
 		end
 	end
@@ -26,10 +26,10 @@ class TasksController < ApplicationController
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
 		@task = Task.find(params[:id])
 		if @task.update_attributes(task_params)
-			flash.now[:notice] = "Task Updated"
+			flash[:notice] = "Task Updated"
 			redirect_to retrofit_job_path(params[:retrofit_job_id])
 		else
-			flash.now[:notice] = "Try Again"
+			flash.now[:notice] = "Fix the following errors:"
 			render :edit
 		end
 	end
