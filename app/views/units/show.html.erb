@@ -1,51 +1,63 @@
-<h3>
-	Show page for Units
-</h3>
+
 
 <div class="unit-detail">
 
+	<h3>
+		<%= @unit.name_for_retrofit_job %>
+	</h3>
+
+<div class="unit-left">
 	<p>
 		<%= content_tag :a, :href => "#{@unit.img}", :target => 'blank' do -%>
 			<%= tag :img, :src => "#{@unit.img}" %>
 		<% end -%>
 	</p>
-	<p>
-		<%= @unit.url %>
-	</p>
-	<p>
-		<%= @unit.type_of %>
-	</p>
-	<p>
-		<%= @unit.order_identifier %>
-	</p>
-	<p>
-		<%= @unit.vendor %>
-	</p>
+
 	<p>
 		<%= @unit.mfg %>
-	</p>
-	<p>
-		<%= @unit.product_identifier %>
+		<%= @unit.product_type %>
 	</p>
 	<p>
 		<%= @unit.nickname %>
-	</p>
-	<p>
 		<%= @unit.finish %>
 	</p>
+
+</div>
+<div class="unit-right">
 	<p>
+		Unit Page<br>
+		<%= @unit.url %>
+	</p>
+	<p>
+		Unit Type<br>
+		<%= @unit.type_of %>
+	</p>
+	<p>
+		Order ID<br>
+		<%= @unit.order_identifier %>
+	</p>
+	<p>
+		Vendor<br>
+		<%= @unit.vendor %>
+	</p>
+	<p>
+		Product ID<br>
+		<%= @unit.product_identifier %>
+	</p>
+	<p>
+		Description<br>
 		<%= @unit.description %>
 	</p>
+
+</div>
+	
+	<%= button_to "edit", edit_unit_path(@unit.id), method: :get, :class => "edit-form" %>
+
 	<p>
+		Notes<br>
 		<%= @unit.notes %>
 	</p>
-	<p>
-		<%= @unit.product_type %>
-	</p>
 
-
-	<%= button_to "edit", edit_unit_path(@unit.id), method: :get, :class => "edit-form" %>
-	
 </div>
 
 

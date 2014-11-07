@@ -184,6 +184,9 @@
 								<%= u.status %>
 							<% end -%>
 							<li>
+								<%= link_to "unit details", unit_path(u.unit.id) %>
+							</li>
+							<li>
 								<%= button_to "edit", edit_retrofit_job_inventory_path(@retrofit_job, u.id), method: :get, :class => "edit-form" %>
 							</li>
 						</ul>

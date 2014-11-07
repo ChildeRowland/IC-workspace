@@ -24,11 +24,12 @@ body {
 }
 
 body a:link {
-
+	color: #c34b9e;;
+	text-decoration: none;
 }
 
 body a:visited {
-	
+	color: #c34b9e;
 }
 
 body ul {
