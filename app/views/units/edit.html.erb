@@ -41,7 +41,7 @@
 		<%= f.label "IC Notes" %>
 		<%= f.text_area :notes %>
 		<%= f.label "Product Type" %>
-		<%= f.text_field :product_type %>
+		<%= f.select(:product_type, options_for_select(['unknown', 'trackhead', 'accessory']) ) %>
 	
 		<div class="multi-input">
 

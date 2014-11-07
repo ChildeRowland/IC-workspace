@@ -25,7 +25,7 @@
 		<%= f.label "notes" %>
 		<%= f.text_area :notes %>
 		<%= f.label "status", {:class => "form-dates"} %>
-		<%= f.select(:status, options_for_select([['incomplete'], ['pending'], ['complete']])) %>
+		<%= f.select(:status, options_for_select([['incomplete'], ['pending'], ['complete']], :selected => @task.status)) %>
 	
 		<div class="multi-input">
 

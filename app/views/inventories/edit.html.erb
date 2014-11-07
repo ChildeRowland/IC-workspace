@@ -9,9 +9,7 @@
 		<%= f.label "Notes" %>
 		<%= f.text_area :notes %>
 		<%= f.label "Status", {:class => "form-dates"} %>
-		<%= f.select(:status, options_for_select(['speculitive', 'ordered', 'shipped', 'warehouse', 'on-site', 'missing'])) %>
-
-		<%= "Currently: #{@inventory.status}" %><br>
+		<%= f.select(:status, options_for_select(['speculitive', 'ordered', 'shipped', 'warehouse', 'on-site', 'missing'], :selected => @inventory.status)) %>
 		
 		<div class="multi-input">
 

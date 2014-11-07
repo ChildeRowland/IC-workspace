@@ -8,11 +8,11 @@ class Unit < ActiveRecord::Base
  		:presence =>
  		{:message => "Unit must have nickname."}
 
- 	def name_for_retrofit_job
- 		"#{mfg}, #{nickname} #{finish}"
- 	end
-
   	has_many :inventories
   	has_many :retrofit_jobs, through: :inventories
+
+  	def name_for_retrofit_job
+ 		"#{mfg}, #{nickname} #{finish}"
+ 	end
 
 end
