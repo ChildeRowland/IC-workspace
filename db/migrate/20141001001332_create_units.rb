@@ -11,7 +11,7 @@ class CreateUnits < ActiveRecord::Migration
       t.string :finish
     	t.string :description
     	t.text :notes
-    	t.integer :product_type
+    	t.string :product_type
       t.string :url
       t.timestamps
     end

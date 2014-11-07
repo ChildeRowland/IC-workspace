@@ -78,11 +78,6 @@ ActiveRecord::Schema.define(version: 20141105144919) do
     t.datetime "updated_at"
   end
 
-  create_table "sites", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "tasks", force: true do |t|
     t.integer  "retrofit_job_id"
     t.string   "title"
@@ -120,7 +115,7 @@ ActiveRecord::Schema.define(version: 20141105144919) do
     t.string   "finish"
     t.string   "description"
     t.text     "notes"
-    t.integer  "product_type"
+    t.string   "product_type"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
