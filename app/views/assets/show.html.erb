@@ -75,7 +75,7 @@
 		Upcoming Jobs
 	</h3>
 
-	<% if @asset.crews.last.nil? %>
+	<% if @asset.crews.last.nil? || @asset.crews.last.retrofit_job.finish < Date.today %>
 
 		<p>
 			Not currently Assigned to any Job
