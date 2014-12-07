@@ -35,6 +35,43 @@
 
 <div>
 	<h3>
+		Travel Preferences
+	</h3>
+
+	<% if @asset.preference.nil? %>
+
+		<%= link_to 'add preferences', new_asset_preference_path(@asset) %>
+
+	<% else %>
+
+		<p>
+			<%= "Home Airport: #{@asset.preference.airport}" %>
+		</p>
+		<p>
+			<%= "Airline: #{@asset.preference.airline}" %>
+		</p>
+		<p>
+			<%= "Seating: #{@asset.preference.seats}" %>
+		</p>
+		<p>
+			<%= "Other: #{@asset.preference.other}" %>
+		</p>
+
+		<%= link_to 'edit preferences', edit_asset_preference_path(@asset, @asset.preference.id) %>
+
+	<% end %>
+
+</div>
+
+<div>
+	<h3>
+		Rewards Information
+	</h3>
+
+</div>
+
+<div>
+	<h3>
 		Upcoming Jobs
 	</h3>
 
@@ -72,5 +109,6 @@
 	<h3>
 		Upcoming Logistics
 	</h3>
+
 </div>
 

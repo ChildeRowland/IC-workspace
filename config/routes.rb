@@ -14,7 +14,12 @@ Rails.application.routes.draw do
     resources :inventories
   end
 
-  resources :assets, :units
+  resources :assets do
+    resources :preferences
+    resources :rewards
+  end
+
+  resources :units
 
   resources :resources, only: [:index]
 

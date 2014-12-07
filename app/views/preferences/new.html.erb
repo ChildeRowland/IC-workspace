@@ -1,0 +1,35 @@
+<% if @preference.errors.any? %>
+	<div class="validation-messages">
+		<ul>
+			<% @preference.errors.each do | field, msg| %>
+				<li><%= msg %></li><br>
+   			<% end %>
+   		</ul>
+   	</div>
+<% end %>
+
+<h3>
+	<%= "#{@asset.fname}'s travel preferences" %>
+</h3>
+
+<div class="all-forms">
+	<%= form_for([@asset, @preference], method: :post) do |f| %>
+		<%= f.label "Home Airport" %>
+		<%= f.text_field :airport %>
+		<%= f.label "Airline" %>
+		<%= f.text_field :airline %>
+		<%= f.label "Seats", {:class => "form-dates"} %>
+		<%= f.select(:seats, options_for_select([['window'], ['aisle']])) %><br>
+		<%= f.label "Other" %>
+		<%= f.text_area :other %>
+
+		<div class="multi-input">
+
+			<%= f.submit "add", :class => "submit-button submit" %>
+
+		</div>
+	<% end %>
+</div>
+
+	<%= button_to "cancel", asset_path(params[:asset_id]), method: :get, :class => "submit-button cancel" %>
+
