@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141207003002) do
+ActiveRecord::Schema.define(version: 20141225203705) do
 
   create_table "addresses", force: true do |t|
     t.integer  "locatable_id"
@@ -71,6 +71,14 @@ ActiveRecord::Schema.define(version: 20141207003002) do
     t.string   "seats"
     t.string   "airline"
     t.text     "other"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reports", force: true do |t|
+    t.integer  "retrofit_job_id"
+    t.date     "day"
+    t.string   "completed_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
