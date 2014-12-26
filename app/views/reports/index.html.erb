@@ -1,4 +1,3 @@
-
 <h3>
 	<%= "#{@retrofit_job.store_name_and_number} Job Site Reports" %>
 </h3>
@@ -15,10 +14,7 @@
 		<% @reports.each do |r| %>
 			<ul>
 				<li>
-					<%= r.day %>
-				</li>
-				<li>
-					<%= r.completed_by %>
+					<%= "Posted by #{r.completed_by}, on #{r.day.to_s(:install_date)}"%>
 				</li>
 				<li>
 					<% r.items.all.each do |i| %>
@@ -27,13 +23,18 @@
 								<%= i.title %>
 							</li>
 							<li>
-								<%= i.notes %>
+								<%= simple_format(i.notes) %>
 							</li>
 						</ul>
 					<% end %>
+				</li>
+				<li>
+					<%= link_to "Add Item" %>
 				</li>
 			</ul>
 		<% end %>
 	</div>
 
 <% end %>
+
+<%= link_to "Add Report", new_retrofit_job_report_path %>

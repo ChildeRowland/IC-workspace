@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :travels
     end
     resources :inventories
-    resources :reports
+    resources :reports 
   end
 
   resources :assets do

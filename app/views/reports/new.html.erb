@@ -20,11 +20,11 @@
 	<%= form_for([@retrofit_job, @report],html: { multipart: true}, method: :post) do |f| %>
 		<%= f.label "Date of Work" %>
 		<%= f.date_select :day, :order => [:month, :day, :year] %><br>
-		<%= f.label "Entered By:" %>
+		<%= f.label "Crew Lead:" %>
 		<%= f.text_field :completed_by %>
 
 		<%= f.fields_for :items do |i| %>
-			<%= i.label "Title" %>
+			<%= i.label "Catagory" %>
 			<%= i.text_field :title %>
 			<%= i.label "Report Item" %>
 			<%= i.text_area :notes %>
