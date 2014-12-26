@@ -29,7 +29,11 @@
 					<% end %>
 				</li>
 				<li>
-					<%= link_to "Add Item" %>
+					<%= form_for([@report[:id => r.id], @new_item], :url => retrofit_job_reports_path(params[:retrofit_job_id]), method: :create) do |f| %>
+						<%= f.label "title" %>
+						<%= f.text_field :title %>
+						<%= f.submit "Add Item" %>
+					<% end %>
 				</li>
 			</ul>
 		<% end %>
