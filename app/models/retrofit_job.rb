@@ -20,6 +20,8 @@ class RetrofitJob < ActiveRecord::Base
 
 	has_many :inventories, :dependent => :destroy
 	has_many :units, through: :inventories
+
+	has_many :reports, :dependent => :destroy
 	
 
 	def google_maps_format

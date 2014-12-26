@@ -1,0 +1,43 @@
+<% if @report.errors.any? %>
+	<div class="validation-messages">
+		<ul>
+			<% @report.errors.each do | field, msg| %>
+				<li><%= msg %></li><br>
+   			<% end %>
+   		</ul>
+   	</div>
+<% end %>
+
+<h3>
+	<%= "Add a report to #{@retrofit_job.store_name_and_number}" %>
+</h3>
+
+<p>
+	Items in red must be completed.
+</p>
+
+<div class="all-forms">
+	<%= form_for([@retrofit_job, @report],html: { multipart: true}, method: :post) do |f| %>
+		<%= f.label "Date of Work" %>
+		<%= f.date_select :day, :order => [:month, :day, :year] %><br>
+		<%= f.label "Entered By:" %>
+		<%= f.text_field :completed_by %>
+
+		<%= f.fields_for :items do |i| %>
+			<%= i.label "Title" %>
+			<%= i.text_field :title %>
+			<%= i.label "Report Item" %>
+			<%= i.text_area :notes %>
+		<% end %>
+
+		<div class="multi-input">
+				
+			<%= f.submit :submit, {:class => "submit-button submit" } %>
+
+		</div>
+	<% end %>
+</div>	
+		
+	<%= button_to "cancel", retrofit_job_reports_path, method: :get, :class => "submit-button cancel" %>
+
+

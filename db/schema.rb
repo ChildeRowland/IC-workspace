@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141225203705) do
+ActiveRecord::Schema.define(version: 20141225204756) do
 
   create_table "addresses", force: true do |t|
     t.integer  "locatable_id"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 20141225203705) do
     t.integer  "unit_id"
     t.integer  "quantity"
     t.string   "status"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: true do |t|
+    t.integer  "listable_id"
+    t.string   "listable_type"
+    t.string   "title"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
