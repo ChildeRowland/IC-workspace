@@ -7,9 +7,6 @@ class ReportsController < ApplicationController
 		@new_item = @report.items.build
 	end
 
-		# @new_crew = @retrofit_job.crews.build(params[:crew])
-		# @crew = @retrofit_job.crews(params[:id])
-
 	def new
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
 		@report = Report.new 
