@@ -3,8 +3,10 @@ class ReportsController < ApplicationController
 	def index
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
 		@reports = @retrofit_job.reports.all
-		@report = @reports.last
-		@new_item = @report.items.build
+		if !Report.last.nil?
+			@report = Report.last		
+			@new_item = @report.items.build
+		end
 	end
 
 	def new
@@ -13,10 +15,13 @@ class ReportsController < ApplicationController
 		@report.items.build
 	end
 
+	# @user.businesses.build if @user.businesses.empty?
+
 	def create
 		@retrofit_job = RetrofitJob.find(params[:retrofit_job_id])
 		@report = @retrofit_job.reports.build(report_params)
-		@report.items.build
+# Prevent a blank record from saving.
+		@report.items.build if @report.items.empty?
 		if @report.save
 			flash[:notice] = "Report Added"
 			redirect_to retrofit_job_reports_path(params[:retrofit_job_id])

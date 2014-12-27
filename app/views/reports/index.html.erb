@@ -45,7 +45,7 @@
 					</div>
 				</li>
 				<li>
-					<%= link_to "Remove Report", retrofit_job_report_path(@retrofit_job, r.id), method: :delete %>
+					<%= link_to "Remove Report", retrofit_job_report_path(@retrofit_job, r.id), method: :delete, data: {:confirm => "Remove this Job Report?"} %>
 				</li>
 			</ul>
 		<% end %>
