@@ -411,6 +411,22 @@ nav > ul > li > ul > li > a {
 
 }
 
+@media print {
+
+	body {
+		font-size: 10px;
+	}
+
+	a {
+		display: none;
+	}
+
+	form {
+		display: none;
+	}
+
+}
+
 /* Footer */
 /*footer {
 	position: absolute;

@@ -12,8 +12,8 @@ Rails.application.routes.draw do
       resources :travels
     end
     resources :inventories
-    resources :reports do
-      resources :items 
+    resources :reports, only: [:index, :new, :create, :destroy] do
+      resources :items, only: [:create, :destroy] 
     end
   end
 
