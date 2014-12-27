@@ -1,3 +1,18 @@
 // Place all the styles related to the Reports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.reports ul {
+	background-color: rgb(247, 239, 239);
+	padding: 10px 10px 30px 10px;
+	margin: 5px;
+}
+
+.reports ul ul {
+	background-color: lightgrey;
+}
+
+.reports .item-button {
+	margin: 1% 30% 0 44%;
+}

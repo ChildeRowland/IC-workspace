@@ -19,20 +19,18 @@ class ReportsController < ApplicationController
 		@report.items.build
 		if @report.save
 			flash[:notice] = "Report Added"
-			redirect_to retrofit_job_reports_path(@retrofit_job, @retrofit_job_id)
+			redirect_to retrofit_job_reports_path(params[:retrofit_job_id])
 		else
 			flash.now[:notice] = "Fix the following errors:"
 			render :new
 		end
 	end
 
-	def edit
-	end
-
-	def update
-	end
-
 	def destroy
+		if Report.find(params[:id]).destroy
+			flash[:notice] = "Job Report Removed"
+			redirect_to retrofit_job_reports_path(params[:retrofit_job_id])
+		end
 	end
 
 	private

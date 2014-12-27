@@ -17,16 +17,16 @@
 </p>
 
 <div class="all-forms">
-	<%= form_for([@retrofit_job, @report],html: { multipart: true}, method: :post) do |f| %>
-		<%= f.label "Date of Work" %>
+	<%= form_for([@retrofit_job, @report], method: :post) do |f| %>
+		<%= f.label "Date of Work", {:class => "no-blank"} %>
 		<%= f.date_select :day, :order => [:month, :day, :year] %><br>
-		<%= f.label "Crew Lead:" %>
+		<%= f.label "Crew Lead:", {:class => "no-blank"} %>
 		<%= f.text_field :completed_by %>
 
 		<%= f.fields_for :items do |i| %>
-			<%= i.label "Catagory" %>
+			<%= i.label "Catagory", {:class => "no-blank"} %>
 			<%= i.text_field :title %>
-			<%= i.label "Report Item" %>
+			<%= i.label "Report Item", {:class => "no-blank"} %>
 			<%= i.text_area :notes %>
 		<% end %>
 

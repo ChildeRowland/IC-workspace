@@ -2,6 +2,8 @@
 	<%= "#{@retrofit_job.store_name_and_number} Job Site Reports" %>
 </h3>
 
+<%= link_to "Add Report", new_retrofit_job_report_path %>
+
 <% if @reports.empty? %>
 
 	<p>
@@ -10,8 +12,8 @@
 
 <% else %>
 
-	<div>
-		<% @reports.each do |r| %>
+	<div class="reports">
+		<% @reports.reverse.each do |r| %>
 			<ul>
 				<li>
 					<%= "Posted by #{r.completed_by}, on #{r.day.to_s(:install_date)}"%>
@@ -25,19 +27,25 @@
 							<li>
 								<%= simple_format(i.notes) %>
 							</li>
+							<li>
+								<%= link_to "remove item", retrofit_job_report_item_path(@retrofit_job, r.id, i.id), method: :delete, data: {confirm: "Remove this List Item from the Job Report?"} %>
+							</li>
 						</ul>
 					<% end %>
 				</li>
 				<li>
 					<div class="all-forms">
 					<%= form_for([@report[:id => r.id], @new_item], :url => retrofit_job_report_items_path(:report_id => r.id), method: :create) do |f| %>
-						<%= f.label "title" %>
-						<%= f.text_field :title %>
 						<%= f.label "Catogory" %>
+						<%= f.text_field :title %>
+						<%= f.label "Report Item" %>
 						<%= f.text_area :notes %>
-						<%= f.submit "Add Item" %>
+						<%= f.submit "Add Item", {:class => "item-button"} %>
 					<% end %>
 					</div>
+				</li>
+				<li>
+					<%= link_to "Remove Report", retrofit_job_report_path(@retrofit_job, r.id), method: :delete %>
 				</li>
 			</ul>
 		<% end %>
@@ -45,4 +53,6 @@
 
 <% end %>
 
-<%= link_to "Add Report", new_retrofit_job_report_path %>
+
+
+
