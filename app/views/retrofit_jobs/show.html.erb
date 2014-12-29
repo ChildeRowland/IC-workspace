@@ -78,7 +78,7 @@
 						<li><%= "#{c.title}:" %></li>
 						<li><%= "#{c.fname} #{c.lname}" %></li>
 						<li><%= mail_to("#{c.email}", name = nil, html_options = {bcc: "chris@invisiblecircus.net", subject: "#{@retrofit_job.store_name_and_number} LED Retrofit"}) %></li>
-						<li class="notes" ><%= simple_format(c.notes) %></li>
+						<li class="notes" ><%= simple_format(c.notes) if !c.notes.empty?%></li>
 						<li><%= button_to "edit contact", edit_retrofit_job_contact_path(@retrofit_job, c.id), :method => :get, :class => "edit-form" %></li>
 					</ul>
 				</li>
@@ -139,7 +139,6 @@
 						</li>
 					<% end %>
 				</ul>
-				<%= button_to "edit crew", edit_retrofit_job_crew_path(@retrofit_job, @crew), method: :get, :class => "edit-form" %>
 			<% end %>
 	</div>
 </div>
@@ -181,7 +180,7 @@
 								<%= "#{u.unit.name_for_retrofit_job}" %>
 							</li>
 							<li>
-								<%= simple_format(u.notes) %>
+								<%= simple_format(u.notes) if !u.notes.empty? %>
 							</li>
 							<%= content_tag :li, class: "#{u.status}" do -%>
 								<%= u.status %>
@@ -259,9 +258,9 @@
 		<% @retrofit_job.crews.each do |c| %>
 			<li>
 				<%= c.asset.first_and_last_name %>
-				<%= link_to 'travel', new_retrofit_job_crew_travel_path(@retrofit_job, c.id) %>
-				<%= link_to 'hotel' %>
-				<%= link_to 'car' %>
+				<%= link_to 'travel', new_retrofit_job_crew_travel_path(@retrofit_job, c.id), :class => "add-logistics" %>
+				<%= link_to 'hotel', :class => "add-logistics" %>
+				<%= link_to 'car', :class => "add-logistics" %>
 
 				<% if c.travels.last.nil? %>
 
@@ -272,25 +271,34 @@
 				<% else %>
 
 					<ul>
-						<% c.travels.each do |t| %>
+						<% c.travels.order("day asc").each do |t| %>
 							<li>
 								<ul>
 									<li class="logistics-header">
 											Flight/Train
 									</li>
 									<li>
-										<%= "#{t.carrier_name} - #{t.carrier_number}" %>
+										<%= "#{t.carrier_name} #{t.carrier_number}" %>
+										<% begin %>
+											<% if t.day == Date.today || t.day == Date.tomorrow %>
+												<%= link_to "status", "http://google.com/search?q=#{t.carrier_name} #{t.carrier_number}", :target => "blank" %>
+											<% end %>
+										<% rescue %>
+											Travel Day formating error.  Edit this field.
+										<% end %>
+
 									</li>
 									<li>
 										<%= "Confirmation: #{t.confirmation_number}" %>
 									</li>
 									<li>
 										<% begin %>
-										<%= t.day.to_s(:logistics_date) %>
+											<%= t.day.to_s(:logistics_date) %>
 										<% rescue StandardError %>
-										Travel day formatting error. Edit this field.
+											Travel day formatting error. Edit this field.
 										<% end %>
 									</li>
+
 									<li>
 										<% begin %>
 										<%= "#{t.depart_city} - #{t.depart_time.to_s(:clock)}" %>
@@ -298,6 +306,7 @@
 										Departing time formatting error.  Edit this field.
 										<% end %>
 									</li>
+
 									<li>
 										<% begin %>
 										<%= "#{t.arrive_city} - #{t.arrive_time.to_s(:clock)}" %>
@@ -308,7 +317,7 @@
 									<li>
 										<%= t.status %>
 									</li>
-										<%= simple_format(t.notes) %>
+										<%= simple_format(t.notes) if !t.notes.empty? %>
 									</li>
 									<li>
 										<%= button_to 'edit', edit_retrofit_job_crew_travel_path(@retrofit_job, c.id, t.id), method: :get, :class => "edit-form" %>
