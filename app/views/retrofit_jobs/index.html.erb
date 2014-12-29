@@ -13,8 +13,7 @@
 		<ul>
 			<% @retrofit_jobs.order("start asc").each do |r| %>
 			<li class="index-list">
-				<%= r.store_number %>
-				<%= r.mall_name %>
+				<%= r.store_name_and_number %>
 				<%= link_to "Veiw Job", retrofit_job_path(:id => r.id) %><br>
 				Installing:
 				<%= r.start.strftime("%A %B, %d, %Y") %>
