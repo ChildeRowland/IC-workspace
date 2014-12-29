@@ -97,37 +97,37 @@
 			IC Crew
 		</h4>
 
-			<% if Asset.last.nil? %>
-				<p>
-					No assets available in the IC Database, but you can <%= link_to "add some here.", new_asset_path %>
-				</p>
-			<% elsif @assets.empty? %>
+		<% if Asset.last.nil? %>
+			<p>
+				No assets available in the IC Database, but you can <%= link_to "add some here.", new_asset_path %>
+			</p>
+		<% elsif @assets.empty? %>
 
-				<div class="drop-form">
+			<div class="drop-form">
 				<%= form_for([@retrofit_job, @new_crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
 				<%= f.label "Select Name" %><br>
 				<%= f.select(:asset_id, Asset.all.collect {|a| [a.first_and_last_name, a.id]}) %>
 				<%= f.submit "add to #{@retrofit_job.store_number}" %>
 				<% end %>
-				</div>
+			</div>
 
 				<p>
 					<%= "No Assets are assigned to #{@retrofit_job.store_name_and_number}.  Use the drop down list select from the available labor." %>
 				</p>
 
-			<% else %>
+		<% else %>
 
-				<div class="drop-form">
+			<div class="drop-form">
 				<%= form_for([@retrofit_job, @new_crew], :url => retrofit_job_crews_path(params[:id]), method: :create) do |f| %>
 				<%= f.label "Select Name" %><br>
 				<%= f.select(:asset_id, Asset.all.collect {|a| [a.first_and_last_name, a.id]}) %>
 				<%= f.submit "add to #{@retrofit_job.store_number}" %>
 				<% end %>
-				</div>
-
+			</div>
+			<div>
 				<ul>
 					<% @retrofit_job.crews.each do |c| %>
-						<li>
+						<li class="crew-list">
 						<%= c.asset.fname %>
 						<%= c.asset.lname %><br>
 						<%= c.asset.phone %><br>
@@ -139,7 +139,8 @@
 						</li>
 					<% end %>
 				</ul>
-			<% end %>
+			</div>
+		<% end %>
 	</div>
 </div>
 

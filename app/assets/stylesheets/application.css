@@ -155,6 +155,12 @@ nav > ul > li > ul > li > a {
 	box-shadow: 5px 7px 2px #888888;
 }
 
+/* Crew */
+
+.crew-list {
+	margin: 10px 0px 0px 0px;
+	}
+
 /* Tasks, to do list boxes */
 
 .to-do-list {
