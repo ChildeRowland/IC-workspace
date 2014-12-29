@@ -225,7 +225,7 @@
 						<%= t.description %>
 					</li>
 					<li>
-						<%= simple_format(t.notes) %>
+						<%= simple_format(t.notes) if !t.notes.empty? %>
 					</li>
 					<%= content_tag :li, class: "#{t.status}" do -%>
 						<%= t.status %>
